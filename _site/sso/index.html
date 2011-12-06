@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Ruby Christmas Contest">
+    <meta name="author" content="Dimelo">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ruby Christmas Contest</title>
+    <link href="/stylesheets/bootstrap.css" media="screen,print" rel="Stylesheet" type="text/css" />
+    <link href="/stylesheets/style.css" media="screen,print" rel="Stylesheet" type="text/css" />
+    <link href="/stylesheets/prettify.css" type="text/css" rel="stylesheet" />
+  </head>
+
+<body>
+  <div class="container">
+    <header>
+    <div class="page-header">
+      <p><a href="/"><img src="/images/dimelo_neige.png"/></a></p>
+      <h1>Ruby Christmas Contest</h1>
+    </div>
+    </header>
+    <style type="text/css">
+  form .input {
+     margin-left:235px;
+  }
+  fieldset legend, .actions {
+    padding-left:235px;
+  }
+  .input label, .input input {float:left}
+  input[type=checkbox] + label {
+    float:left;
+    display: inline;
+    width:33px;
+  }
+  textarea[readonly] { cursor:text;}
+</style>
+<div class="row">
+  <div class="span4">
+    <h2>Sso link generator</h2>
+    <p>This interface will help you generate SSO link with params your own params. Please refer to the SSO documentation for the meaning of all params</p>
+    <p>Empty parameters are not sent to the server, check the Clear checkbox to force send an empty value</p>
+  </div>
+  <div class="span12">
+    <form>
+      <fieldset>
+        <legend>Fill up mandatory sso parameters</legend>
+        
+        <div class="clearfix">
+          <label class="span4" for="server">Your dimelo authentication server url</label>
+          <div class="input">
+            <input type="text" name="server" id="server xlInput" class="span7" value="https://my-users-domain.users.dimelo.com">
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="salt">Salt (configured server side in the dimelo admin)</label>
+          <div class="input">
+            <input type="text" name="salt" id="salt xlInput" class="span7">
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="service">Service (the target url, can be a customized url)</label>
+          <div class="input">
+            <input type="text" name="service" id="service xlInput" class="span7" value="https://application-domain.app-type.dimelo.com/target-path">
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="firstname">First Name</label>
+          <div class="input">
+            <input type="text" name="firstname" id="firstname xlInput" class="span7">
+          </div>
+        </div>
+
+
+        <div class="clearfix">
+          <label class="span4" for="uuid">uuid</label>
+          <div class="input">
+            <input type="text" name="uuid" id="uuid xlInput" class="span7">
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="expires_in">expires in (seconds)</label>
+          <div class="input">
+            <input type="text" value="600" name="expires_in" id="expires_in xlInput" class="span7">
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Optional parameters</legend>
+
+        <div class="clearfix">
+          <label class="span4" for="avatar_url">Avatar URL</label>
+          <div class="input">
+            <input type="text" value="http://www.google.fr/images/logos/ps_logo2.png" name="avatar_url" id="avatar_url xlInput" class="span7">
+            <input type="checkbox" name="avatar_url_clear" id="avatar_url_clear">
+            <label for="avatar_url_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="email">Email</label>
+          <div class="input">
+            <input type="text" name="email" id="email" class="span7">
+            <input type="checkbox" name="email_clear" id="email_clear">
+            <label for="email_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="lastname">Last Name</label>
+          <div class="input">
+            <input type="text" name="lastname" id="lastname" class="span7">
+            <input type="checkbox" name="lastname_clear" id="lastname_clear">
+            <label for="lastname_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="role">Role</label>
+          <div class="input">
+            <input type="text" name="role" id="role" class="span7">
+            <input type="checkbox" name="role_clear" id="role_clear">
+            <label for="role_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="custom_field_1">Custom Field 1</label>
+          <div class="input">
+            <input type="text" name="custom_field_1" id="custom_field_1" class="span7">
+            <input type="checkbox" name="custom_field_1_clear" id="custom_field_1_clear">
+            <label for="custom_field_1_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="custom_field_2">Custom Field 2</label>
+          <div class="input">
+            <input type="text" name="custom_field_2" id="custom_field_2" class="span7">
+            <input type="checkbox" name="custom_field_2_clear" id="custom_field_2_clear">
+            <label for="custom_field_2_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="custom_field_3">Custom Field 3</label>
+          <div class="input">
+            <input type="text" name="custom_field_3" id="custom_field_3" class="span7">
+            <input type="checkbox" name="custom_field_3_clear" id="custom_field_3_clear">
+            <label for="custom_field_3_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="custom_field_4">Custom Field 4</label>
+          <div class="input">
+            <input type="text" name="custom_field_4" id="custom_field_4" class="span7">
+            <input type="checkbox" name="custom_field_4_clear" id="custom_field_4_clear">
+            <label for="custom_field_4_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="custom_field_5">Custom Field 5</label>
+          <div class="input">
+            <input type="text" name="custom_field_5" id="custom_field_5" class="span7">
+            <input type="checkbox" name="custom_field_5_clear" id="custom_field_5_clear">
+            <label for="custom_field_5_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="custom_field_6">Custom Field 6</label>
+          <div class="input">
+            <input type="text" name="custom_field_6" id="custom_field_6" class="span7">
+            <input type="checkbox" name="custom_field_6_clear" id="custom_field_6_clear">
+            <label for="custom_field_6_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="custom_field_7">Custom Field 7</label>
+          <div class="input">
+            <input type="text" name="custom_field_7" id="custom_field_7" class="span7">
+            <input type="checkbox" name="custom_field_7_clear" id="custom_field_7_clear">
+            <label for="custom_field_7_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="custom_field_8">Custom Field 8</label>
+          <div class="input">
+            <input type="text" name="custom_field_8" id="custom_field_8" class="span7">
+            <input type="checkbox" name="custom_field_8_clear" id="custom_field_8_clear">
+            <label for="custom_field_8_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="custom_field_9">Custom Field 9</label>
+          <div class="input">
+            <input type="text" name="custom_field_9" id="custom_field_9" class="span7">
+            <input type="checkbox" name="custom_field_9_clear" id="custom_field_9_clear">
+            <label for="custom_field_9_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="custom_field_10">Custom Field 10</label>
+          <div class="input">
+            <input type="text" name="custom_field_10" id="custom_field_10" class="span7">
+            <input type="checkbox" name="custom_field_10_clear" id="custom_field_10_clear">
+            <label for="custom_field_10_clear">Clear</label>
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label class="span4" for="result">Generated link (click button to regenerate)</label>
+          <div class="input">
+            <textarea id="result" class="span7" readonly="true" rows="10"></textarea>
+            <span class="help-block"><a href="#" id="result_link" style="display:none">Go to the generated sso link</a></span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <input type="submit" value="Generate SSO link" class="btn primary"/>
+        </div>      
+
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+    </div>
+      <script type="text/javascript" src="/javascripts/prettify.js"></script>
+      <script type="text/javascript" >prettyPrint()</script>
+  </body>
+</html>

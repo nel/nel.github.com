@@ -1,0 +1,21 @@
+/* Form */
+
+#test-form { width: 300px; }
+#test-form p label { display: block; font-weight: bold; margin-bottom: 5px; width: 100%; }
+#test-form p.input input { width: 100%; }
+#test-form p.submit { text-align: right; }
+
+/* STDOUT */
+
+#stdout p.failure { color: #C40000; font-weight: bold; }
+#stdout p.success { color: #337733; font-weight: bold; }
+#stdout p code { font-weight: bold; }
+#stdout table { border: 1px solid #333; margin: 10px 0; }
+#stdout table td, #stdout table th { padding: 8px 15px; }
+#stdout table th { background: #333; color: white; font-weight: bold; }
+#stdout table td { border: dashed #777; border-width: 1px 0; padding: 4px 15px; }
+#stdout table td.name, #stdout table td.required, #stdout table td.value { font-family: monospace; }
+#stdout table th.required, #stdout table td.required { text-align: center; }
+#stdout table tr.present { background: #ADFF2F; }
+#stdout table tr.missing { background: #C40000; color: white; }
+#stdout table tr.absent { background: #FAFAD2; }

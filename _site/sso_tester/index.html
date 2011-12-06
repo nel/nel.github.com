@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Ruby Christmas Contest">
+    <meta name="author" content="Dimelo">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ruby Christmas Contest</title>
+    <link href="/stylesheets/bootstrap.css" media="screen,print" rel="Stylesheet" type="text/css" />
+    <link href="/stylesheets/style.css" media="screen,print" rel="Stylesheet" type="text/css" />
+    <link href="/stylesheets/prettify.css" type="text/css" rel="stylesheet" />
+  </head>
+
+<body>
+  <div class="container">
+    <header>
+    <div class="page-header">
+      <p><a href="/"><img src="/images/dimelo_neige.png"/></a></p>
+      <h1>Ruby Christmas Contest</h1>
+    </div>
+    </header>
+    <div class="row">
+  <div class="span4">
+    <h2>SSO link tester</h2>
+    <p>This tool is to test your already generated sso link. This will check the different parameters of your link and tell you if there is an issue (missing params, wrong token ...). This is particularly useful to debug token generation issue</p>
+  </div>
+  <div class="span12">
+    <form action="#" method="get" accept-charset="utf-8" id="test-form">
+      <fieldset>
+        <legend>Fill up sso url you want to test and server side salt</legend>
+        <div class="clearfix">
+          <label for="salt">Salt: </label>
+          <div class="input">
+            <input type="text"  class="span7" name="salt" value="" id="salt">
+          </div>
+        </div>
+        <div class="clearfix">
+          <label for="url">URL: </label>
+          <div class="input">
+            <input type="text" name="url" id="url" rows="8" class="span7" />
+          </div>
+        </div>
+        <div class="actions">
+          <input class="btn primary" type="submit" value="Test your sso link" id="run" />
+        </div>
+      </fieldset>
+    </form>
+    <p id="stdout"></p>
+    <script type="text/javascript" charset="utf-8">new SSOTester($('test-form'));</script>
+  </div>
+</div>
+
+    </div>
+      <script type="text/javascript" src="/javascripts/prettify.js"></script>
+      <script type="text/javascript" >prettyPrint()</script>
+  </body>
+</html>
