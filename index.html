@@ -29,7 +29,7 @@ layout: default
         <li>Nous autoriser à publier votre solution ici en cas de victoire</li>
         <li>Envoyer vos réponses à <a href="mailto:&#099;&#111;&#110;&#116;&#101;&#115;&#116;&#064;&#100;&#105;&#109;&#101;&#108;&#111;&#046;&#099;&#111;&#109;?subject=Solution Christmas Contest">contest at dimelo.com</a></li>
         <li>Rendre sa solution avant le premier <a href="http://www.meetup.com/parisrb/">événement Paris.rb de 2012</a></li>
-        <li>Si plusieurs programmes répondent à toutes ces points, le gagnant sera tiré au sort parmi ceux-là</li>
+        <li>Si plusieurs programmes répondent à ces différents points, le gagnant sera tiré au sort parmi ceux-là</li>
       </ul>
     </div>
   </div><!-- /row -->
@@ -145,7 +145,7 @@ layout: default
       <p><strong>Résultat:</strong> En l'occurrence le score de l'utilisateur sera donc égal à followers + repositories.size + commits. </p>
 
       <h3>Cas conditionnel</h3>
-      <p>Les conditions ne concernent que les attributs de repository et donc que les points attribués aux repositories. Les opérateur de comparaison à supporter sont <code>&gt;</code> et <code>&lt;</code> qui ont le même sens qu'en ruby, elle s'applique avec à gauche un attribut de répository et à droite un entier. On peut combiner les conditions juste avec l'opérateur <code>&amp;&amp;</code> qui correspond à l'opérateur logique AND. Quand plusieurs règles d'affectation de point avec l'opérateur <code>=</code> sont executer seul la dernière est prise en compte (comme pour l'affectation de variable).
+      <p>Les conditions ne concernent que les attributs de repository et donc que les points attribués aux repositories. Les opérateur de comparaison à supporter sont <code>&gt;</code> et <code>&lt;</code> qui ont le même sens qu'en ruby. L'opérateur s'applique avec à gauche un attribut de repository et à droite un entier. On peut combiner les conditions juste avec l'opérateur <code>&amp;&amp;</code> qui correspond à l'opérateur logique AND. Les conditions sont executées au runtime avant les affectations (comme en ruby), si la condition est fausse l'affectation est ignorées. Quand plusieurs affectation par l'opérateur <code>=</code> sont executées successivement, seule la dernière affectation est conservée (comme pour l'affectation de variable). La logique d'execution des règles est ici similaire à du code ruby.</p>
       <pre class="prettyprint">
     
         repository = 1
@@ -172,7 +172,7 @@ layout: default
 
       </pre>
 
-      <p> <strong>Résultat:</strong> Ici on est dans le cas où on attribut 5 points par commit, par follower et par repository. L'arythmétique en jeu est identique à de l'affectation de variable en ruby, l'affectation remplace toute les valeurs précédantes et l'affectation additive affecte l'ancienne valeur + la nouvelle. Le seul cas un peu spécial ici est le cas de repository qui affecte 5 à la valeur par defaut (zéro), ce qui donne donc 5 au final.</p>
+      <p> <strong>Résultat:</strong> Ici on est dans le cas où on attribut 5 points par commit, par follower et par repository. L'arythmétique en jeu est identique à de l'affectation de variable en ruby, l'affectation remplace la valeur précédante et l'affectation additive affecte au registre la valeur "ancienne valeur + nouvelle valeur". Le seul cas un peu spécial ici est le cas de repository qui affecte 5 à la valeur par defaut (zéro), ce qui donne donc 5 au final.</p>
 
       <h3>Cas complet</h3>
 
@@ -189,7 +189,7 @@ layout: default
 
       </pre>
       <p>
-        <strong>Résultat:</strong> C'est le cas le plus complet que l'on puisse avoir, les commits rapportent 0, les followers rapportent 2 points, et au niveau des repositories ceux qui ont moins de 2 watchers ET forks rapport 1 points sinon la valeur de la base est 5 point. Si en plus le repository a plus de 10 watchers on gagne un bonus de 10 points, pareil pour les forks. Si en plus à la fois les watchers et les forks dépassent 100 alors le reposity rapporte 50 points en tout.
+        <strong>Résultat:</strong> C'est le cas le plus complet que l'on puisse avoir, les commits rapportent 0, les followers rapportent 2 points, et au niveau des repositories ceux qui ont moins de 2 watchers ET forks rapportent 1 points sinon la valeur de base est 5 point. Si en plus le repository a plus de 10 watchers on gagne un bonus de 10 points, pareil pour les forks. Si en plus à la fois les watchers et les forks dépassent 100 alors le reposity rapporte 50 points en tout.
       </p>
       <h3>Récapitulatif des opérateurs et opérandes</h3>
       
