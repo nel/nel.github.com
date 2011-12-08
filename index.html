@@ -134,10 +134,10 @@ layout: default
     </div>
     <div class="span12">
       <h3>Cas simple</h3>
-      <p>Le fichier contient une règle simple pour chacun des attributs, en l'occurrence 1 point par followers, 1 point par commit et 1 point par repositories</p>
+      <p>Le fichier contient une règle simple pour chacun des attributs, en l'occurrence 1 point par follower, 1 point par commit et 1 point par repository</p>
       <pre class="prettyprint">
 
-        commits = 1
+        commit = 1
         repository = 1
         follower = 1
 
@@ -165,9 +165,9 @@ layout: default
         commit = 1
         commit = 2
         commit += 3
-        followers = 1
-        followers += 2
-        followers = 5
+        follower = 1
+        follower += 2
+        follower = 5
         repository += 5
 
       </pre>
@@ -180,7 +180,7 @@ layout: default
 
       <pre class="prettyprint">
 
-        followers = 2
+        follower = 2
         repository = 1 if repository.watchers  &lt; 2 &amp;&amp; repository.forks &lt; 2
         repository = 5
         repository += 10 if repository.watchers  &gt; 10
@@ -203,7 +203,7 @@ layout: default
         </thead>
         <tbody>
           <tr>
-            <td><code>repository</code> , <code>followers</code> , <code>commit</code></td>
+            <td><code>repository</code> , <code>follower</code> , <code>commit</code></td>
             <td>Registre de point</td>
             <td>Ces registres définisse la valeur en point de l'object courant</td>
           </tr>
