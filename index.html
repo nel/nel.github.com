@@ -28,7 +28,7 @@ layout: default
         <li>Pas de programme en doublon</li>
         <li>Nous autoriser à publier votre solution ici en cas de victoire</li>
         <li>Envoyer vos réponses à <a href="mailto:&#099;&#111;&#110;&#116;&#101;&#115;&#116;&#064;&#100;&#105;&#109;&#101;&#108;&#111;&#046;&#099;&#111;&#109;?subject=Solution Christmas Contest">contest at dimelo.com</a></li>
-        <li>Rendre sa solution avant le premier <a href="http://www.meetup.com/parisrb/">événement Paris.rb de 2012</a></li>
+        <li>Rendre sa solution avant le 10 janvier 2012 à midi, les résultats seront communiqués lors du premier <a href="http://www.meetup.com/parisrb/">événement Paris.rb de 2012</a></li>
         <li>Si plusieurs programmes répondent à ces différents points, le gagnant sera tiré au sort parmi ceux-là</li>
       </ul>
     </div>
@@ -181,8 +181,8 @@ layout: default
       <pre class="prettyprint">
 
         follower = 2
-        repository = 1 if repository.watchers  &lt; 2 &amp;&amp; repository.forks &lt; 2
         repository = 5
+        repository = 1 if repository.watchers  &lt; 2 &amp;&amp; repository.forks &lt; 2
         repository += 10 if repository.watchers  &gt; 10
         repository += 10 if repository.forks  &gt;  10
         repository = 50 if repository.watchers  &gt; 100 &amp;&amp; repository.forks &gt; 100
