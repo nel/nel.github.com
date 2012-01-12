@@ -5,18 +5,21 @@ layout: default
   <div class="hero-unit">
     <h1>Résultats:</h1>
     <p>
-      Le <a href="https://gist.github.com/1583049">fichier de règles</a> qui a servi à déterminer le gagnant devait donner pour résultat: <strong>18769</strong>.
+      Le <a href="https://gist.github.com/1583049">fichier de règles</a> qui a servi à déterminer le gagnant devait donner pour résultat : <strong>18769</strong>.
     </p>
     <p>
-      <strong>9</strong> des candidats ont un programme qui retourne le bon résultat, le gagnant <a href="https://twitter.com/adrienjarthon">@adrienjarthon</a> a été tiré au sort devant public à <a href="http://www.meetup.com/parisrb/events/44098142/">ParisRb</a> et gagne donc un AR Drone !.
+      <strong>9</strong> des candidats ont un programme qui retourne le bon résultat.</p>
+    <p>
+      <strong>Le gagnant</strong> <a href="https://twitter.com/adrienjarthon">@adrienjarthon</a>, désigné par tirage au sort le 10 janvier devant le public de <a href="http://www.meetup.com/parisrb/events/44098142/">Paris.rb</a> a gagné un <a href="https://twitter.com/#!/Dimelo/status/157105568992079874/photo/1">AR Drone</a> !</p>
+    <p>
+      Dimelo salue par ailleurs la <strong>prouesse artistique</strong> de <a href="https://twitter.com/brmichel">@brmichel</a> en lui offrant aussi un AR Drone pour sa solution extrêmement compacte (moins de 10 lignes).
     </p>
     <p>
-      <a href="https://twitter.com/brmichel">@brmichel</a> a trouvé une solution extremment compacte (moins de 10 lignes) et nous avons décidé de lui offrir également un AR drone pour la prouesse artistique.
+      <strong>Bravo</strong> à Adrien et Michel ! <strong>Merci</strong> à tous les participants et bon hacking ! 
     </p>
+    <p><a class="btn primary large" href="https://gist.github.com/1601550">Solution @adrianjarthon &raquo;</a> <a class="btn primary large" href="https://github.com/nono/Ruby-Christmas-Contest/blob/master/ruby-contest">Solution @brmichel &raquo;</a></p>
     <p>
-      Merci à tous les participants et bon hacking ! 
-    </p>
-    <p><a class="btn primary large" href="https://gist.github.com/1601550">Solution @adrianjarthon &raquo;</a> <a class="btn primary large" href="https://github.com/nono/Ruby-Christmas-Contest">Solution @brmichel &raquo;</a> <a class="btn primary large" href="http://jobs.dimelo.com">Venir travailler avec nous ! &raquo;</a></p>
+    <a class="btn primary large" href="http://jobs.dimelo.com">Rejoignez Dimelo ! &raquo;</a></p>
   </div>
   <div class="row">
     <div class="span-one-third">
@@ -57,7 +60,7 @@ layout: default
   <div class="row">
     <div class="span4">
       <h2>Les données de départs</h2>
-      <p>Le programme démarrera avec ces données constantes correspondant à un sous-ensemble de données d'un profil github (celui de Defunkt). C'est sur ces données que devront s'appliquer les règles et l'execution des règles fournira un score utilisateur. Il n'y a donc rien de spécial à faire au niveau programmation à ce niveau, juste à utiliser le profil test ci-dessous.</p>
+      <p>Le programme démarrera avec ces données constantes correspondant à un sous-ensemble de données d'un profil github (celui de Defunkt). C'est sur ces données que devront s'appliquer les règles et l'execution des règles fournira un score utilisateur. Il n'y a donc rien de spécial à faire au niveau programmation, juste à utiliser le profil test ci-dessous.</p>
     </div>
     <div class="span12">
       <h3>Les données du profil</h3>
@@ -84,7 +87,7 @@ layout: default
           <tr>
             <td><code>commits</code></td>
             <td>Fixnum</td>
-            <td>Nombre de commits effectué par le profil</td>
+            <td>Nombre de commits effectués par le profil</td>
           </tr>
           <tr>
             <td><code>repositories</code></td>
@@ -171,10 +174,10 @@ layout: default
 
       </pre>
 
-    <p><strong>Résultat:</strong> Dans ce cas les commits et les followers ne rapportent pas de point (à 0 par défaut) et chaque repository rapporte 1 points s'il a moins de 11 watchers et forks, 5 points si il a plus de 10 watchers OU plus de 10 forks et 20 points si il a plus de 10 watchers ET plus de 10 forks.</p>
+    <p><strong>Résultat:</strong> Dans ce cas les commits et les followers ne rapportent pas de point (à 0 par défaut) et chaque repository rapporte 1 point s'il a moins de 11 watchers et forks, 5 points s'il a plus de 10 watchers OU plus de 10 forks et 20 points s'il a plus de 10 watchers ET plus de 10 forks.</p>
 
      <h3>Cas d'additivité</h3>
-     <p> Jusque-là chaque définition d'attribution de point écrasait la précédante à partir du moment où elle s'executait (les conditions, si il y en avait, étaient remplies). Il existe un autre opérateur d'affection <code>+=</code> qui permet d'ajouter des points à l'affectation existante plutôt que de la remplacer. Cela fonctionne comme l'opérateur += en ruby. </p>
+     <p> Jusque-là chaque définition d'attribution de points écrasait la précédente à partir du moment où elle s'executait (les conditions, si il y en avait, étaient remplies). Il existe un autre opérateur d'affection <code>+=</code> qui permet d'ajouter des points à l'affectation existante plutôt que de la remplacer. Cela fonctionne comme l'opérateur += en ruby. </p>
 
       <pre class="prettyprint">
 
@@ -188,7 +191,7 @@ layout: default
 
       </pre>
 
-      <p> <strong>Résultat:</strong> Ici on est dans le cas où on attribut 5 points par commit, par follower et par repository. L'arythmétique en jeu est identique à de l'affectation de variable en ruby, l'affectation remplace la valeur précédante et l'affectation additive affecte au registre la valeur "ancienne valeur + nouvelle valeur". Le seul cas un peu spécial ici est le cas de repository qui affecte 5 à la valeur par defaut (zéro), ce qui donne donc 5 au final.</p>
+      <p> <strong>Résultat:</strong> Ici on est dans le cas où on attribue 5 points par commit, par follower et par repository. L'arythmétique en jeu est identique à de l'affectation de variable en ruby, l'affectation remplace la valeur précédente et l'affectation additive affecte au registre la valeur "ancienne valeur + nouvelle valeur". Le seul cas un peu spécial ici est le cas de repository qui affecte 5 à la valeur par defaut (zéro), ce qui donne donc 5 au final.</p>
 
       <h3>Cas complet</h3>
 
