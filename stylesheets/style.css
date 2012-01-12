@@ -10,5 +10,9 @@ text-align:center;
 border-bottom: 6px solid black;
 }
 section {
-padding-top: 40px;
+padding-bottom: 40px;
+}
+.hero-unit h1 {
+font-size:3em;
+margin-bottom: 10px;
 }
