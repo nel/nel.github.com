@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8" />
-    <meta name="description" content="Gagnez un AR Drone en participant à un défi Ruby">
-    <meta name="author" content="Dimelo">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Ruby Christmas Contest</title>
-    <link href="/stylesheets/bootstrap.css" media="screen,print" rel="Stylesheet" type="text/css" />
-    <link href="/stylesheets/style.css" media="screen,print" rel="Stylesheet" type="text/css" />
-    <link href="/stylesheets/prettify.css" type="text/css" rel="stylesheet" />
-    <meta property="og:title" content="Ruby Christmas Contest"/>
+    <meta charset="utf-8"/>
+    <meta name="description" content="{{page.description}}"/>
+    <meta name="author" content="Dimelo"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{{page.title}}</title>
+    <link href="/stylesheets/bootstrap.css" media="screen,print" rel="Stylesheet" type="text/css"/>
+    <link href="/stylesheets/style.css" media="screen,print" rel="Stylesheet" type="text/css"/>
+    <link href="/stylesheets/prettify.css" type="text/css" rel="stylesheet"/>
+    <meta property="og:title" content="{{page.title}}"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="http://contest.dimelo.com/"/>
-    <meta property="og:image" content="http://contest.dimelo.com/images/Badge_DimeloRubyContest.jpg"/>
-    <link rel="image_src" href="http://contest.dimelo.com/images/Badge_DimeloRubyContest.jpg"/>
-    <meta property="og:site_name" content="Ruby Christmas Contest"/>
-    <meta property="og:description"
-    content="Gagnez un AR Drone en participant à un défi Ruby" />
-    <link rel="canonical" href="http://contest.dimelo.com/"/>
-  </head>
+    <meta property="og:url" content="{{site.url}}{{page.url}}"/>
+    <meta property="og:image" content="{{site.url}}/images/{% if page.badge %}{{ page.badge }}{% else %}logo.jpg{% endif %}"/>
+    <link rel="image_src" href="{{site.url}}/images/{% if page.badge %}{{ page.badge }}{% else %}logo.jpg{% endif %}"/>
+    <meta property="og:site_name" content="{{site.title}}"/>
+    <meta property="og:description" content="{{page.title}}"/>
+    <link rel="canonical" href="{{site.url}}{{page.url}}"/>
+  <head>
 
 <body>
   <div class="container">
     <header>
     <div class="page-header">
-      <p><a href="/"><img src="/images/dimelo_neige.png"/></a></p>
-      <h1>Ruby Christmas Contest</h1>
+      <p><a href="/"><img src="/images/{% if page.logo %}{{ page.logo }}{% else %}logo.jpg{% endif %}"/></a></p>
+      <h1>{{page.title}}</h1>
     </div>
     </header>
     {{ content }}
