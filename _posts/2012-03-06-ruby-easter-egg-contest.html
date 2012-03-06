@@ -51,7 +51,7 @@ badge: easter-contest-dimelo-badge.png
 
       <p>Cette concatenation se fera par default entre tous les process mais il est possible de positionner un paramètre <code>env['rack.livetraffic_id']</code> au niveau de chaque requête pour ne concatener que sur les requêtes ayant cette id.</p>
 
-      <h3>Information aggrégée</h3>
+      <h3>Informations aggrégées</h3>
       <p>
         Le middleware rack permettra d'aggréger sur une certain période l'information sur les données suivantes:
         <ul>
@@ -86,13 +86,17 @@ badge: easter-contest-dimelo-badge.png
           "rate": 10.5,
           "uniq_visitor": 4,
           "hostnames":  {
-                          "mysite.com": 50,
-                          "admin.mysite.com": 3
-                        },
-          "host_paths": {
-                          "mysite.com/foo": 40,
-                          "mysite.com/bar": 10,
-                          "admin.mysite.com/users": 3
+                          "mysite.com": { "total" => 50,
+                                          "paths" => {
+                                            "/foo": 40,
+                                            "/bar": 10
+                                          }
+                                        },
+                          "admin.mysite.com": { "total" => 3,
+                                                "paths" => {
+                                                  "/users" => 3
+                                                }
+                                              }
                         },
           "slow_requests":  {
                               "mysite.com/foo?params1=slow": 10,
@@ -137,12 +141,7 @@ badge: easter-contest-dimelo-badge.png
           <tr>
             <td><code>hostnames</code></td>
             <td>Object</td>
-            <td>Liste exhaustives des hostnames en clé et nombre de requêtes sur celui-ci en valeur</td>
-          </tr>
-          <tr>
-            <td><code>host_paths</code></td>
-            <td>Object</td>
-            <td>Liste exhaustives des hostnames+path en clé et nombre de requêtes sur celui-ci en valeur</td>
+            <td>L'object contient des clées correspondant aux hostnames. C'est clée contient un autre object avec une clée <code>total</code> qui contient le nombre total de requête sur le hostname et une clée <code>paths</code> qui contient un autre object dont les clées sont les paths accèdés et en valeur le nombre de requete sur ces paths.</td>
           </tr>
           <tr>
             <td><code>slow_requests</code></td>
