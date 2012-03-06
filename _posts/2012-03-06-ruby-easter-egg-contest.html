@@ -49,7 +49,7 @@ badge: easter-contest-dimelo-badge.png
       <p>Le middleware agrégera l'ensemble des données des process/thread rack du réseau utilisant le middleware.<br/>
         Cette agrégation peut se faire au niveau du stockage s'il y en a, ou de toute autre manière laissée à la libre appréciation de l'implémenteur.</p>
 
-      <p>Cette agrégation se fera par défaut entre tous les process rack mais il est possible de positionner un paramètre <code>env['rack.livetrafic_id']</code> au niveau de chaque requête pour n'agréger que sur les requêtes ayant cette id.</p>
+      <p>Cette agrégation se fera par défaut entre tous les process rack mais il est possible de positionner un paramètre <code>env['rack.livetraffic_id']</code> au niveau de chaque requête pour n'agréger que sur les requêtes ayant cette id.</p>
 
       <h3>Informations agrégées</h3>
       <p>Le middleware rack permettra d'agréger sur une certain période l'information sur les données suivantes:</p>
@@ -75,7 +75,7 @@ badge: easter-contest-dimelo-badge.png
 
       <h3>Le client : la lecture des données</h3>
       <p>Le middleware rack se charge de la récupération des données. Ces données sont lues à la demande par un client.</p>
-      <p>Le client est un simple script disponible à <code>script/rack-top</code> et s'exécutant avec un appel à <code>./script/rack-top &lt;livetrafic_id&gt;</code>. <code>livetrafic_id</code> est un paramètre optionnel correspondant au paramètre env['rack.livetrafic_id'] qui permet d'avoir plusieurs silos pour gérer les statistiques de plusieurs applications Rack indépendantes.</p>
+      <p>Le client est un simple script disponible à <code>script/rack-top</code> et s'exécutant avec un appel à <code>./script/rack-top &lt;livetraffic_id&gt;</code>. <code>livetraffic_id</code> est un paramètre optionnel correspondant au paramètre env['rack.livetraffic_id'] qui permet d'avoir plusieurs silos pour gérer les statistiques de plusieurs applications Rack indépendantes.</p>
       <p>Les temps seront donnés en ms et les moyennes seront arrondies à 1 décimale.</p> 
       <p>L'execution de ./script/rack-top renvoie un json répondant au format suivant:</p>
       <pre class="prettyprint">
@@ -159,7 +159,7 @@ badge: easter-contest-dimelo-badge.png
       <h3>Configuration et fichier config.ru</h3>
       <p>Le middleware doit être fournis avec un fichier rackup config.ru fonctionnel et être compatible avec la "norme" <a href="https://github.com/rack/rack/wiki/Presentations">rack/rackup</a>. Voici un exemple de fichier config.ru</p>
       <pre class="prettyprint">
-        use Rack::Livetrafic, {} #puts here your storage/discovery options if needed
+        use Rack::LiveTraffic, {} #puts here your storage/discovery options if needed
 
         app = proc do |env|
           [ 200, {'Content-Type' => 'text/plain'}, ['OK'] ]
