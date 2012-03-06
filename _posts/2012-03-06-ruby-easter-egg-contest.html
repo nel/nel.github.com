@@ -13,11 +13,9 @@ badge: easter-contest-dimelo-badge.png
       <ul>
         <li>Déterminer les urls accéder via Rack</li>
         <li>Calculer le nombre approximatif de visiteurs uniques</li>
+        <li>Et cela en temps réel agrégé sur les 5 dernières minutes</li>
       </ul>
-      <p>Le tout en temps sur les 5 dernières minutes.</p>
-      <p>Ce middleware rack doit fonctionner en mode multicomputer (sur le même réseau interne), multiprocess, multithread. Les données exactes à générer sont détaillées dans la <a href="#contest">section suivante</a>.</p>
-      <h4>Les critères</h4>
-      <p>Le rack sera intégré à un serveur web et nous publierons la suite de tests d'intégration qui sera utilisée pour tester les résultats. L'exactitude des résultats et la scalabilité de l'ensemble (performance intrinsèque + maitrise du stockage + complexité de l'algorithme en fonction du nombre de requêtes) serviront à déterminer le gagnant. <a href="#evaluation">Voir les détails sur l'évaluation</a>.</p>
+      <p>Ce middleware rack doit pouvoir fonctionner sur tous les thread/process Rack utilisant le middleware sur un même reseau. Vous pouvez consulter les détails dans la <a href="#contest">section suivante</a> ainsi que les <a href="#evaluation">critères d'évaluation</a>.</p>
     </div>
     <div class="span-one-third">
       <h3>Un <strong>iPad 3</strong> à gagner !</h3>
