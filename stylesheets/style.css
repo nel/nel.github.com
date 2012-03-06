@@ -1,4 +1,5 @@
 header {
+position:relative;
 margin-top: 30px;
 }
 header h1 {
@@ -18,4 +19,10 @@ padding-bottom: 40px;
 .hero-unit h1 {
 font-size:3em;
 margin-bottom: 10px;
+}
+#quicklinks {
+position:absolute;
+top: 0;
+right: 0;
+list-style: none;
 }

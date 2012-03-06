@@ -11,29 +11,29 @@ badge: easter-contest-dimelo-badge.png
       <h3>Un défi en Ruby !</h3>
       <p>Pour la 2e édition du Dimelo Contest, nous vous proposons de coder un <a href="http://railscasts.com/episodes/151-rack-middleware">middleware Rack</a> pour:
       <ul>
-        <li>Déterminer les urls accédées via Rack</li>
-        <li>Calculer le nombre approximatif de visiteurs uniques</li>
-        <li>Et cela en temps réel, agrégé sur les 5 dernières minutes</li>
+        <li>déterminer les urls accédées via Rack,</li>
+        <li>calculer le nombre approximatif de visiteurs uniques,</li>
+        <li>et cela en temps réel, agrégé sur les 5 dernières minutes.</li>
       </ul>
       <p>Ce middleware rack doit pouvoir fonctionner sur tous les thread/process Rack utilisant le middleware sur un même reseau. Vous pouvez consulter les détails dans la <a href="#contest">section suivante</a> ainsi que les <a href="#evaluation">critères d'évaluation</a>.</p>
     </div>
     <div class="span-one-third">
-      <h3>Un <strong>iPad 3</strong> à gagner !</h3>
+      <h3>Un <strong>iPad 3(?)</strong> à gagner !</h3>
       <img width="300px" src="/images/iPad-3.jpg" />
     </div>
     <div class="span-one-third" id="rules">
       <h3>Peu de règles !</h3>
       <p>Tout rubyiste peut participer ! Pour gagner, il faut :</p>
       <ul>
-        <li>Fournir un programme qui fonctionne et respecte les <a href="#packaging">contraintes</a></li>
-        <li>Avoir un algorithme performant, scalable au niveau des données et en fonction du trafic, et le plus précis possible ...</li>
-        <li>Un programme par personne</li>
-        <li>Pas de programme en doublon</li>
-        <li>Nous autoriser à publier votre solution ici (ou sur github) en cas de victoire</li> 
-        <li>Rendre sa solution avant l'<a href="http://www.meetup.com/parisrb/">événement Paris.rb d'avril 2012</a></li>
-        <li>Pour nous contacter voir la <a href="#contact">section contact</a></li>
-      </ul>
-    </div>
+        <li>fournir un programme qui fonctionne et respecte les <a href="#packaging">contraintes</a></li>
+        <li>avoir un algorithme performant, scalable au niveau des données et en fonction du trafic, et le plus précis possible ...</li>
+        <li>1 programme par personne - pas de programme en doublon</li>
+        <li>nous autoriser à publier votre solution ici (ou sur github) en cas de victoire</li> 
+        <li>rendre sa solution avant l'<a href="http://www.meetup.com/parisrb/">événement Paris.rb d'avril 2012</a></li>
+        </ul>
+        <p>Pour toute question, contactez-nous sur Twitter @dimelo, ou publier un tweeds avec le hashtag #dimelocontest.</p>
+        <p>Sinon, rendez-vous en <a href="#contact">section contact</a>.
+     </div>
   </div><!-- /row -->
 </section>
 <section id="contest">
@@ -54,12 +54,12 @@ badge: easter-contest-dimelo-badge.png
       <h3>Informations agrégées</h3>
       <p>Le middleware rack permettra d'agréger sur une certain période l'information sur les données suivantes:</p>
         <ul>
-          <li>Le nombre de requêtes sur la période</li>
-          <li>Le nombre de requêtes par seconde en moyenne sur la période</li>
-          <li>Visiteurs uniques sur la période (l'algorithme tentera de prendre en compte les <a href="http://fr.wikipedia.org/wiki/Network_address_translation">connexions "nattées"</a>).</li>
-          <li>Le nombre d'accès par hostname sur la période</li>
-          <li>Le nombre d'accès par hostname/path sur la période (c'est à dire les url sans les query string)</li>
-          <li>Url des 10 requêtes les plus lentes sur la période</li>
+          <li>le nombre de requêtes sur la période,</li>
+          <li>le nombre de requêtes par seconde en moyenne sur la période,</li>
+          <li>les visiteurs uniques sur la période (l'algorithme tentera de prendre en compte les <a href="http://fr.wikipedia.org/wiki/Network_address_translation">connexions "nattées"</a>),</li>
+          <li>le nombre d'accès par hostname sur la période,</li>
+          <li>le nombre d'accès par hostname/path sur la période (c'est à dire les url sans les query string),</li>
+          <li>les url des 10 requêtes les plus lentes sur la période.</li>
         </ul>
       <h3>Période d'agrégation</h3>
       <p>
@@ -70,7 +70,7 @@ badge: easter-contest-dimelo-badge.png
         L'implémentation devra faire au mieux pour ne pas être trop sensible à un éventuel décalage de temps entre les serveurs d'un même réseau.
       </p>
       <p>
-        <span class="label important">Important</span> Il n'est pas demandé de conserver d'historique des informations au delà des 5 minutes, au contraire, un des critères de jugement sera la scalabilité au niveau du stockage s'il y en a, sur le/les daemons sinon. Si vous avez besoin de fournir un script de nettoyage mettez le dans un <code>script/clean</code>, le script de nettoyage doit également scaler convenablement.
+        <span class="label important">Important</span> Il n'est pas demandé de conserver d'historique des informations au-delà des 5 minutes, au contraire, un des critères de jugement sera la scalabilité au niveau du stockage s'il y en a, sur le/les daemons sinon. Si vous avez besoin de fournir un script de nettoyage mettez-le dans un <code>script/clean</code>, le script de nettoyage doit également scaler convenablement.
       </p>
 
       <h3>Le client : la lecture des données</h3>
@@ -157,7 +157,7 @@ badge: easter-contest-dimelo-badge.png
     </div>
     <div class="span12">
       <h3>Configuration et fichier config.ru</h3>
-      <p>Le middleware doit être fournis avec un fichier rackup config.ru fonctionnel et être compatible avec la "norme" <a href="https://github.com/rack/rack/wiki/Presentations">rack/rackup</a>. Voici un exemple de fichier config.ru</p>
+      <p>Le middleware doit être fourni avec un fichier rackup config.ru fonctionnel et être compatible avec la "norme" <a href="https://github.com/rack/rack/wiki/Presentations">rack/rackup</a>. Voici un exemple de fichier config.ru</p>
       <pre class="prettyprint">
         use Rack::LiveTraffic, {} #puts here your storage/discovery options if needed
 
@@ -169,9 +169,9 @@ badge: easter-contest-dimelo-badge.png
       </pre>
 
       <h3>Stockage, dépendances et versions</h3>
-      <p>Les seuls stockages externes autorisées sont <a href="http://memcached.org/">memcached</a>, <a href="http://redis.io/">redis</a>, <a href="http://www.mongodb.org/">mongodb</a> et <a href="http://www.mysql.com/">mysql</a>, ils doivent fonctionner avec les paramètres par défaut et sans login/mdp.</p>
-      <p>Si vous souhaitez utiliser un système de queue externe seul <a href="http://faye.jcoglan.com/">faye</a>, <a href="http://www.rabbitmq.com/">rabbitmq</a> et <a href="http://zeromq.com">ØMQ</a> sont autorisés</p>
-      <p>Si vous avez besoin d'un daemon et/ou de workers merci d'interfacer avec <a href="http://ddollar.github.com/foreman/">foreman</a> dans un procfile. Ces daemons doivent être codé en ruby et toutes leurs dépenses décrites dans un <a href="http://gembundler.com/gemfile.html">Gemfile</a>. Les gems devront s'installer sans autre dépendances que les librairies de dev des dépendances externes autorisées.
+      <p>Les seuls stockages externes autorisés sont <a href="http://memcached.org/">memcached</a>, <a href="http://redis.io/">redis</a>, <a href="http://www.mongodb.org/">mongodb</a> et <a href="http://www.mysql.com/">mysql</a>, ils doivent fonctionner avec les paramètres par défaut et sans login/mdp.</p>
+      <p>Si vous souhaitez utiliser un système de queue externe seuls <a href="http://faye.jcoglan.com/">faye</a>, <a href="http://www.rabbitmq.com/">rabbitmq</a> et <a href="http://zeromq.com">ØMQ</a> sont autorisés</p>
+      <p>Si vous avez besoin d'un daemon et/ou de workers merci d'interfacer avec <a href="http://ddollar.github.com/foreman/">foreman</a> dans un procfile. Ces daemons doivent être codés en ruby et toutes leurs dépenses décrites dans un <a href="http://gembundler.com/gemfile.html">Gemfile</a>. Les gems devront s'installer sans autre dépendances que les librairies de dev des dépendances externes autorisées.
       </p>
       <p>Deux versions de ruby sont autorisées ruby 1.8.7 p249 et 1.9.3 p125, utilisez un .rvmrc pour préciser.</p>
 
@@ -196,19 +196,19 @@ badge: easter-contest-dimelo-badge.png
       <h2>L'évaluation des résultats</h2>
     </div>
     <div class="span12">
-      <h3>Comment allons nous déterminer le gagnant</h3>
-      <p>Seul seront prises en compte les réponses qui correspondent à la <a href="#contest">description du défi</a> et aux <a href="#packaging">contraintes de packaging</a></p>
+      <h3>Comment allons-nous déterminer le gagnant ?</h3>
+      <p>Seules seront prises en compte les réponses qui correspondent à la <a href="#contest">description du défi</a> et aux <a href="#packaging">contraintes de packaging</a></p>
       <p>Une grille d'évaluation sera mise en place, elle couvrira UNIQUEMENT les points suivants:</p>
       <ul>
           <li>Qualité intrinsèque du middleware: threadsafe, multiprocess ?</li>
           <li>Performance globale du middleware</li>
-          <li>Scalabilité du stockage/réseau, est-ce que les performances sont constantes en fonction du trafic, est-ce que le stockage grossit inconsidérément, est-ce que le nettoyage si besoin est bloquant, lourd, lent, fragmente le stockage ...</li>
+          <li>Scalabilité du stockage/réseau, est-ce que les performances sont constantes en fonction du trafic, est-ce que le stockage grossit inconsidérément, est-ce que le nettoyage si besoin est bloquant, lourd, lent, fragmente le stockage... ?</li>
           <li>Qualité de l'algorithme de calcul des visiteurs uniques</li>
           <li>Qualité des calculs par rapport au trafic réel</li>
           <li>Appréciation globale du code et de la solution</li>
       </ul>
-      <p>Le jury sera composé de 5 personnes faisant parti ou pas de Dimelo, les membres du jury et leurs collègues ne peuvent pas participer au concours.</p>
-      <p>Les résultats de leur évaluation seront envoyés à chacun des candidats mais seul celle du gagnant sera publiée sur ce site avec son code. Les participants et le gagnant restent propriétaires de leur code et peuvent en disposer à leur convenance.</p> 
+      <p>Le jury sera composé de 5 personnes faisant partie ou pas de Dimelo, les membres du jury et leurs collègues ne peuvent pas participer au concours.</p>
+      <p>Les résultats de leur évaluation seront envoyés à chacun des candidats mais seule la solution du gagnant sera publiée sur ce site avec son code. Les participants et le gagnant restent propriétaires de leur code et peuvent en disposer à leur convenance.</p> 
     </div>
   </div>
 </section>
@@ -249,7 +249,7 @@ new TWTR.Widget({
     </div>
     <div class="span10">
       <h3>Comment nous contacter ?</h3>
-      <p>Posez vos questions sur avec le #hashtag <a href="https://twitter.com/#!/search/realtime/%23dimelocontest">#dimelocontest</a> sur twitter afin que tout le monde puisse en bénéficier s'ils le souhaitent.</p>
+      <p>Posez vos questions sur twitter avec le #hashtag <a href="https://twitter.com/#!/search/realtime/%23dimelocontest">#dimelocontest</a> sur twitter afin que tout le monde puisse en bénéficier s'ils le souhaitent.</p>
       <p>Le permalink pour ce contest est <a href="/2012/03/06/ruby-easter-egg-contest.html">http://contest.dimelo.com/2012/03/06/ruby-easter-egg-contest.html</a>.</p>
       <p>Envoyer vos réponses à <a href="mailto:&#099;&#111;&#110;&#116;&#101;&#115;&#116;&#064;&#100;&#105;&#109;&#101;&#108;&#111;&#046;&#099;&#111;&#109;?subject=Solution%20Easter%20Contest">contest at dimelo.com</a> avant l'<a href="http://www.meetup.com/parisrb/">événement Paris.rb d'avril 2012</a>.</p>
     </div>
