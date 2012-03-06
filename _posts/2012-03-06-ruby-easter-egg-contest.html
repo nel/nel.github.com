@@ -11,9 +11,9 @@ badge: easter-contest-dimelo-badge.png
       <h3>Un défi en Ruby !</h3>
       <p>Pour la 2e édition du Dimelo Contest, nous vous proposons de coder un <a href="http://railscasts.com/episodes/151-rack-middleware">middleware Rack</a> pour:
       <ul>
-        <li>Déterminer les urls accéder via Rack</li>
+        <li>Déterminer les urls accédées via Rack</li>
         <li>Calculer le nombre approximatif de visiteurs uniques</li>
-        <li>Et cela en temps réel agrégé sur les 5 dernières minutes</li>
+        <li>Et cela en temps réel, agrégé sur les 5 dernières minutes</li>
       </ul>
       <p>Ce middleware rack doit pouvoir fonctionner sur tous les thread/process Rack utilisant le middleware sur un même reseau. Vous pouvez consulter les détails dans la <a href="#contest">section suivante</a> ainsi que les <a href="#evaluation">critères d'évaluation</a>.</p>
     </div>
@@ -46,14 +46,13 @@ badge: easter-contest-dimelo-badge.png
     </div>
     <div class="span12">
       <h3>Support Multiprocess</h3>
-      <p>Le middleware concatenera l'ensemble des données des process/thread rack du réseau utilisant le middleware.<br/>
-        Cette concatenation peut se faire au niveau du stockage s'il y en a, ou tout autre manière laissée à la libre appréciation de l'implémenteur.</p>
+      <p>Le middleware agrégera l'ensemble des données des process/thread rack du réseau utilisant le middleware.<br/>
+        Cette agrégation peut se faire au niveau du stockage s'il y en a, ou de toute autre manière laissée à la libre appréciation de l'implémenteur.</p>
 
-      <p>Cette concatenation se fera par défaut entre tous les process mais il est possible de positionner un paramètre <code>env['rack.livetrafic_id']</code> au niveau de chaque requête pour ne concatener que sur les requêtes ayant cette id.</p>
+      <p>Cette agrégation se fera par défaut entre tous les process rack mais il est possible de positionner un paramètre <code>env['rack.livetrafic_id']</code> au niveau de chaque requête pour n'agréger que sur les requêtes ayant cette id.</p>
 
       <h3>Informations agrégées</h3>
-      <p>
-        Le middleware rack permettra d'agréger sur une certain période l'information sur les données suivantes:
+      <p>Le middleware rack permettra d'agréger sur une certain période l'information sur les données suivantes:</p>
         <ul>
           <li>Le nombre de requêtes sur la période</li>
           <li>Le nombre de requêtes par seconde en moyenne sur la période</li>
@@ -62,21 +61,20 @@ badge: easter-contest-dimelo-badge.png
           <li>Le nombre d'accès par hostname/path sur la période (c'est à dire les url sans les query string)</li>
           <li>Url des 10 requêtes les plus lentes sur la période</li>
         </ul>
-      </p>
-      <h3>Période de concatenation</h3>
+      <h3>Période d'agrégation</h3>
       <p>
         Les données récupérées permettront de déterminer les informations demandées sur une période de 5 minutes glissantes aka les "dernières 5 minutes".
-        Le résultat de cette concaténation n'a pas besoin d'être disponible sous forme de résultat dans la mémoire et/ou le stockage. Le client (cf section le client) peut la calculer quand il en a besoin.
+        Le résultat de cette agrégation n'a pas besoin d'être disponible sous forme de résultat dans la mémoire et/ou le stockage. Le client rack-top (cf section le client) peut les calculer quand il en a besoin.
       </p>
       <p>
         L'implémentation devra faire au mieux pour ne pas être trop sensible à un éventuel décalage de temps entre les serveurs d'un même réseau.
       </p>
       <p>
-        <span class="label important">Important</span> Il n'est pas demandé de conserver d'historique des informations au delà des 5 minutes, au contraire, un des critères de jugement sera la scalabilité au niveau du stockage s'il y en a. Si vous avez besoin de fournir un script de nettoyage mettez le dans un <code>script/clean</code>, le script de nettoyage doit également scaler convenablement.
+        <span class="label important">Important</span> Il n'est pas demandé de conserver d'historique des informations au delà des 5 minutes, au contraire, un des critères de jugement sera la scalabilité au niveau du stockage s'il y en a, sur le/les daemons sinon. Si vous avez besoin de fournir un script de nettoyage mettez le dans un <code>script/clean</code>, le script de nettoyage doit également scaler convenablement.
       </p>
 
       <h3>Le client : la lecture des données</h3>
-      <p>Le middleware rack se charge de la récupération des données. Ces données sont lus à la demande par un client.</p>
+      <p>Le middleware rack se charge de la récupération des données. Ces données sont lues à la demande par un client.</p>
       <p>Le client est un simple script disponible à <code>script/rack-top</code> et s'exécutant avec un appel à <code>./script/rack-top &lt;livetrafic_id&gt;</code>. <code>livetrafic_id</code> est un paramètre optionnel correspondant au paramètre env['rack.livetrafic_id'] qui permet d'avoir plusieurs silos pour gérer les statistiques de plusieurs applications Rack indépendantes.</p>
       <p>Les temps seront donnés en ms et les moyennes seront arrondies à 1 décimale.</p> 
       <p>L'execution de ./script/rack-top renvoie un json répondant au format suivant:</p>
