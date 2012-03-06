@@ -9,13 +9,15 @@ badge: easter-contest-dimelo-badge.png
   <div class="row">
     <div class="span-one-third">
       <h3>Un défi en Ruby !</h3>
-      <p>Coder un <a href="http://railscasts.com/episodes/151-rack-middleware">middleware Rack</a> afin de calculer en temps réel sur les 5 dernières minutes les urls accèdées via rack et le nombre approximatif de visiteurs uniques.</p>
+      <p>Pour la 2e édition du Dimelo Contest, nous vous proposons de coder un <a href="http://railscasts.com/episodes/151-rack-middleware">middleware Rack</a> pour:
+      <ul>
+        <li>Déterminer les urls accèder via Rack</li>
+        <li>Calculer le nombre approximatif de visiteurs uniques</li>
+      </ul>
+      <p>Le tout en temps sur les 5 dernières minutes.</p>
       <p>Ce middleware rack doit fonctionner en mode multicomputer (sur le même réseau interne), multiprocess, multithread. Les données exactes à générer sont détaillées dans la <a href="#contest">section suivante</a>.</p>
-      <p>Le rack sera intégré à un serveur web et nous testerons les résultats avec une suite de tests d'intégration qui seront publiée. L'exactitude des résultats et la scalabilité de l'ensemble (performance intrinsèque + maitrise du stockage + complexité de l'algorithme en fonction du nombre de requêtes) serviront à déterminer le gagnant.</p>
-      <p>
-        <a href="http://twitter.com/dimelo" class="twitter-follow-button">Follow @dimelo</a>
-        <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-      </p>
+      <h4>Les critères</h4>
+      <p>Le rack sera intégré à un serveur web et nous publierons la suite de tests d'intégration qui sera utilisée pour tester les résultats. L'exactitude des résultats et la scalabilité de l'ensemble (performance intrinsèque + maitrise du stockage + complexité de l'algorithme en fonction du nombre de requêtes) serviront à déterminer le gagnant. <a href="#evaluation">Voir les détails sur l'évaluation</a></p>
     </div>
     <div class="span-one-third">
       <h3>Un <strong>iPad 3</strong> à gagner !</h3>
@@ -47,9 +49,9 @@ badge: easter-contest-dimelo-badge.png
     <div class="span12">
       <h3>Support Multiprocess</h3>
       <p>Le middleware concatenera l'ensemble des données des process/thread rack du réseau utilisant le middleware.<br/>
-        Cette concatenation peut se faire au niveau du stockage, ou tout autre manière laissée à la libre appréciation de l'implémenteur</p>
+        Cette concatenation peut se faire au niveau du stockage s'il y en a, ou tout autre manière laissée à la libre appréciation de l'implémenteur</p>
 
-      <p>Cette concatenation se fera par default entre tous les process mais il est possible de positionner un paramètre <code>env['rack.livetraffic_id']</code> au niveau de chaque requête pour ne concatener que sur les requêtes ayant cette id.</p>
+      <p>Cette concatenation se fera par défaut entre tous les process mais il est possible de positionner un paramètre <code>env['rack.livetraffic_id']</code> au niveau de chaque requête pour ne concatener que sur les requêtes ayant cette id.</p>
 
       <h3>Informations aggrégées</h3>
       <p>
@@ -60,7 +62,7 @@ badge: easter-contest-dimelo-badge.png
           <li>Visiteurs uniques sur la période (l'algorithme tentera de prendre en compte les <a href="http://fr.wikipedia.org/wiki/Network_address_translation">connexions "nattées"</a>).</li>
           <li>Le nombre d'accès par hostname sur la période</li>
           <li>Le nombre d'accès par hostname/path sur la période (c'est à dire les url sans les query string)</li>
-          <li>Url des 30 requêtes les plus lentes sur la période</li>
+          <li>Url des 10 requêtes les plus lentes sur la période</li>
         </ul>
       </p>
       <h3>Période de concatenation</h3>
@@ -72,13 +74,13 @@ badge: easter-contest-dimelo-badge.png
         L'implémentation devra faire au mieux pour ne pas être trop sensible à un eventuel décallage de temps entre les serveurs d'un même réseau.
       </p>
       <p>
-        <span class="label important">Important</span> Il n'est pas demandé de conserver d'historisation des informations, au contraire un des critères de jugement sera la scalabilité au niveau du stockage s'il y en a. Si vous avez besoin de fournir un script de netoyage mettez le dans un <code>script/clean.rb</code>, le script de netoyage doit également scaler convenablement.
+        <span class="label important">Important</span> Il n'est pas demandé de conserver d'historisation des informations, au contraire un des critères de jugement sera la scalabilité au niveau du stockage s'il y en a. Si vous avez besoin de fournir un script de nettoyage mettez le dans un <code>script/clean.rb</code>, le script de nettoyage doit également scaler convenablement.
       </p>
 
       <h3>Le client : la lecture des données</h3>
       <p>Le middleware rack se charge de la récupération des données. Ces données sont lus à la demande par un client.</p>
-      <p>Le client est un simple disponible à <code>script/rack-top</code> et s'executant avec un appel à <code>./script/rack-top <livetraffic_id></code>. <code>livetraffic_id</code> est un paramètre optionnel correspondant au paramètre env['rack.livetraffic_id'] qui permet d'avoir plusieurs silos pour gérer les statistiques de plusieurs applications Rack indépendantes.</p>
-      <p>Les temps seront donnés en ms et les moyennes seront arrondies à 1 décimale. 
+      <p>Le client est un simple disponible à <code>script/rack-top</code> et s'executant avec un appel à <code>./script/rack-top &lt;livetraffic_id&gt;</code>. <code>livetraffic_id</code> est un paramètre optionnel correspondant au paramètre env['rack.livetraffic_id'] qui permet d'avoir plusieurs silos pour gérer les statistiques de plusieurs applications Rack indépendantes.</p>
+      <p>Les temps seront donnés en ms et les moyennes seront arrondies à 1 décimale.</p> 
       <p>L'execution de ./script/rack-top renvoie un json répondant au format suivant:</p>
       <pre class="prettyprint">
         {
@@ -146,7 +148,7 @@ badge: easter-contest-dimelo-badge.png
           <tr>
             <td><code>slow_requests</code></td>
             <td>Object</td>
-            <td>Les 5 requêtes les plus longues l'url complète en clée et le temps en ms en valeur</td>
+            <td>Les 10 requêtes les plus longues l'url complète en clée et le temps en ms en valeur</td>
           </tr>
         </tbody>
       </table>
@@ -180,7 +182,7 @@ badge: easter-contest-dimelo-badge.png
       <h3>Récapitulatif du livrable</h3>
       <p>Le livrable est un répertoire ayant au moins la structure suivante :</p>
       <pre>
-        . – script/clean    # Script de netoyage des datas au besoin
+        . – script/clean    # Script de nettoyage des datas au besoin
         | – script/rack-top # Script de lecture des données qui retourne du JSON
         | – config.ru       # Rackfile pour le middleware (see example)
         | – Gemfile         # Gemfile pour les dépendances ruby
@@ -204,7 +206,7 @@ badge: easter-contest-dimelo-badge.png
       <ul>
           <li>Qualité intrinsèque du middleware: threadsafe, multiprocess ?</li>
           <li>Performance globale du middleware</li>
-          <li>Scalabilité du stockage/reseau, est-ce que les performances sont constantes en fonction du traffic, est-ce que le stockage grossit inconsidérément, est-ce que le netoyage si besoin est bloquant, lourd, lent, fragmente le stockage ...</li>
+          <li>Scalabilité du stockage/reseau, est-ce que les performances sont constantes en fonction du traffic, est-ce que le stockage grossit inconsidérément, est-ce que le nettoyage si besoin est bloquant, lourd, lent, fragmente le stockage ...</li>
           <li>Qualité de l'algorithme de calcul des visiteurs uniques</li>
           <li>Qualité des calculs par rapport au traffic réel</li>
           <li>Appréciation globale du code et de la solution</li>
