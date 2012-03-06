@@ -11,7 +11,7 @@ badge: easter-contest-dimelo-badge.png
       <h3>Un défi en Ruby !</h3>
       <p>Pour la 2e édition du Dimelo Contest, nous vous proposons de coder un <a href="http://railscasts.com/episodes/151-rack-middleware">middleware Rack</a> pour:
       <ul>
-        <li>Déterminer les urls accèder via Rack</li>
+        <li>Déterminer les urls accéder via Rack</li>
         <li>Calculer le nombre approximatif de visiteurs uniques</li>
       </ul>
       <p>Le tout en temps sur les 5 dernières minutes.</p>
@@ -28,7 +28,7 @@ badge: easter-contest-dimelo-badge.png
       <p>Tout rubyiste peut participer ! Pour gagner, il faut :</p>
       <ul>
         <li>Fournir un programme qui fonctionne et respecte les <a href="#packaging">contraintes</a></li>
-        <li>Avoir un algorithme performant, scalable au niveau des données et en fonction du traffic, et le plus précis possible ...</li>
+        <li>Avoir un algorithme performant, scalable au niveau des données et en fonction du trafic, et le plus précis possible ...</li>
         <li>Un programme par personne</li>
         <li>Pas de programme en doublon</li>
         <li>Nous autoriser à publier votre solution ici (ou sur github) en cas de victoire</li> 
@@ -49,16 +49,16 @@ badge: easter-contest-dimelo-badge.png
     <div class="span12">
       <h3>Support Multiprocess</h3>
       <p>Le middleware concatenera l'ensemble des données des process/thread rack du réseau utilisant le middleware.<br/>
-        Cette concatenation peut se faire au niveau du stockage s'il y en a, ou tout autre manière laissée à la libre appréciation de l'implémenteur</p>
+        Cette concatenation peut se faire au niveau du stockage s'il y en a, ou tout autre manière laissée à la libre appréciation de l'implémenteur.</p>
 
-      <p>Cette concatenation se fera par défaut entre tous les process mais il est possible de positionner un paramètre <code>env['rack.livetraffic_id']</code> au niveau de chaque requête pour ne concatener que sur les requêtes ayant cette id.</p>
+      <p>Cette concatenation se fera par défaut entre tous les process mais il est possible de positionner un paramètre <code>env['rack.livetrafic_id']</code> au niveau de chaque requête pour ne concatener que sur les requêtes ayant cette id.</p>
 
-      <h3>Informations aggrégées</h3>
+      <h3>Informations agrégées</h3>
       <p>
-        Le middleware rack permettra d'aggréger sur une certain période l'information sur les données suivantes:
+        Le middleware rack permettra d'agréger sur une certain période l'information sur les données suivantes:
         <ul>
           <li>Le nombre de requêtes sur la période</li>
-          <li>Le nombre de rêquetes/s en moyenne sur la période</li>
+          <li>Le nombre de requêtes par seconde en moyenne sur la période</li>
           <li>Visiteurs uniques sur la période (l'algorithme tentera de prendre en compte les <a href="http://fr.wikipedia.org/wiki/Network_address_translation">connexions "nattées"</a>).</li>
           <li>Le nombre d'accès par hostname sur la période</li>
           <li>Le nombre d'accès par hostname/path sur la période (c'est à dire les url sans les query string)</li>
@@ -71,15 +71,15 @@ badge: easter-contest-dimelo-badge.png
         Le résultat de cette concaténation n'a pas besoin d'être disponible sous forme de résultat dans la mémoire et/ou le stockage. Le client (cf section le client) peut la calculer quand il en a besoin.
       </p>
       <p>
-        L'implémentation devra faire au mieux pour ne pas être trop sensible à un eventuel décallage de temps entre les serveurs d'un même réseau.
+        L'implémentation devra faire au mieux pour ne pas être trop sensible à un éventuel décalage de temps entre les serveurs d'un même réseau.
       </p>
       <p>
-        <span class="label important">Important</span> Il n'est pas demandé de conserver d'historisation des informations, au contraire, un des critères de jugement sera la scalabilité au niveau du stockage s'il y en a. Si vous avez besoin de fournir un script de nettoyage mettez le dans un <code>script/clean</code>, le script de nettoyage doit également scaler convenablement.
+        <span class="label important">Important</span> Il n'est pas demandé de conserver d'historique des informations au delà des 5 minutes, au contraire, un des critères de jugement sera la scalabilité au niveau du stockage s'il y en a. Si vous avez besoin de fournir un script de nettoyage mettez le dans un <code>script/clean</code>, le script de nettoyage doit également scaler convenablement.
       </p>
 
       <h3>Le client : la lecture des données</h3>
       <p>Le middleware rack se charge de la récupération des données. Ces données sont lus à la demande par un client.</p>
-      <p>Le client est un simple script disponible à <code>script/rack-top</code> et s'exécutant avec un appel à <code>./script/rack-top &lt;livetraffic_id&gt;</code>. <code>livetraffic_id</code> est un paramètre optionnel correspondant au paramètre env['rack.livetraffic_id'] qui permet d'avoir plusieurs silos pour gérer les statistiques de plusieurs applications Rack indépendantes.</p>
+      <p>Le client est un simple script disponible à <code>script/rack-top</code> et s'exécutant avec un appel à <code>./script/rack-top &lt;livetrafic_id&gt;</code>. <code>livetrafic_id</code> est un paramètre optionnel correspondant au paramètre env['rack.livetrafic_id'] qui permet d'avoir plusieurs silos pour gérer les statistiques de plusieurs applications Rack indépendantes.</p>
       <p>Les temps seront donnés en ms et les moyennes seront arrondies à 1 décimale.</p> 
       <p>L'execution de ./script/rack-top renvoie un json répondant au format suivant:</p>
       <pre class="prettyprint">
@@ -143,12 +143,12 @@ badge: easter-contest-dimelo-badge.png
           <tr>
             <td><code>hostnames</code></td>
             <td>Object</td>
-            <td>L'object contient des clées correspondant aux hostnames. C'est clée contient un autre object avec une clée <code>total</code> qui contient le nombre total de requête sur le hostname et une clée <code>paths</code> qui contient un autre object dont les clées sont les paths accèdés et en valeur le nombre de requete sur ces paths.</td>
+            <td>L'object contient des clés correspondant aux hostnames. Chacune de ces clés à pour valeur un object qui contient deux clés: une clé <code>total</code> qui contient le nombre total de requête sur le hostname et une clé <code>paths</code> qui contient un autre object dont les clés sont les paths accèdés et en valeur le nombre de requête sur ces paths (voir exemple ci-dessus pour plus de clareté).</td>
           </tr>
           <tr>
             <td><code>slow_requests</code></td>
             <td>Object</td>
-            <td>Les 10 requêtes les plus longues l'url complète en clée et le temps en ms en valeur</td>
+            <td>Les 10 requêtes les plus longues l'url complète en clé et le temps en ms en valeur</td>
           </tr>
         </tbody>
       </table>
@@ -163,7 +163,7 @@ badge: easter-contest-dimelo-badge.png
       <h3>Configuration et fichier config.ru</h3>
       <p>Le middleware doit être fournis avec un fichier rackup config.ru fonctionnel et être compatible avec la "norme" <a href="https://github.com/rack/rack/wiki/Presentations">rack/rackup</a>. Voici un exemple de fichier config.ru</p>
       <pre class="prettyprint">
-        use Rack::LiveTraffic, {} #puts here your storage/discovery options if needed
+        use Rack::Livetrafic, {} #puts here your storage/discovery options if needed
 
         app = proc do |env|
           [ 200, {'Content-Type' => 'text/plain'}, ['OK'] ]
@@ -173,7 +173,7 @@ badge: easter-contest-dimelo-badge.png
       </pre>
 
       <h3>Stockage, dépendances et versions</h3>
-      <p>Les seuls stockages externes autorisées sont <a href="http://memcached.org/">memcached</a>, <a href="http://redis.io/">redis</a>, <a href="http://www.mongodb.org/">mongodb</a> et <a href="http://www.mysql.com/">mysql</a>, ils doivent fonctionner avec les paramètres par défault et sans login/mdp.</p>
+      <p>Les seuls stockages externes autorisées sont <a href="http://memcached.org/">memcached</a>, <a href="http://redis.io/">redis</a>, <a href="http://www.mongodb.org/">mongodb</a> et <a href="http://www.mysql.com/">mysql</a>, ils doivent fonctionner avec les paramètres par défaut et sans login/mdp.</p>
       <p>Si vous souhaitez utiliser un système de queue externe seul <a href="http://faye.jcoglan.com/">faye</a>, <a href="http://www.rabbitmq.com/">rabbitmq</a> et <a href="http://zeromq.com">ØMQ</a> sont autorisés</p>
       <p>Si vous avez besoin d'un daemon et/ou de workers merci d'interfacer avec <a href="http://ddollar.github.com/foreman/">foreman</a> dans un procfile. Ces daemons doivent être codé en ruby et toutes leurs dépenses décrites dans un <a href="http://gembundler.com/gemfile.html">Gemfile</a>. Les gems devront s'installer sans autre dépendances que les librairies de dev des dépendances externes autorisées.
       </p>
@@ -206,9 +206,9 @@ badge: easter-contest-dimelo-badge.png
       <ul>
           <li>Qualité intrinsèque du middleware: threadsafe, multiprocess ?</li>
           <li>Performance globale du middleware</li>
-          <li>Scalabilité du stockage/reseau, est-ce que les performances sont constantes en fonction du traffic, est-ce que le stockage grossit inconsidérément, est-ce que le nettoyage si besoin est bloquant, lourd, lent, fragmente le stockage ...</li>
+          <li>Scalabilité du stockage/réseau, est-ce que les performances sont constantes en fonction du trafic, est-ce que le stockage grossit inconsidérément, est-ce que le nettoyage si besoin est bloquant, lourd, lent, fragmente le stockage ...</li>
           <li>Qualité de l'algorithme de calcul des visiteurs uniques</li>
-          <li>Qualité des calculs par rapport au traffic réel</li>
+          <li>Qualité des calculs par rapport au trafic réel</li>
           <li>Appréciation globale du code et de la solution</li>
       </ul>
       <p>Le jury sera composé de 5 personnes faisant parti ou pas de Dimelo, les membres du jury et leurs collègues ne peuvent pas participer au concours.</p>
