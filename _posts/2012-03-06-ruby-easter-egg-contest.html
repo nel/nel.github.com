@@ -17,7 +17,7 @@ badge: easter-contest-dimelo-badge.png
       <p>Le tout en temps sur les 5 dernières minutes.</p>
       <p>Ce middleware rack doit fonctionner en mode multicomputer (sur le même réseau interne), multiprocess, multithread. Les données exactes à générer sont détaillées dans la <a href="#contest">section suivante</a>.</p>
       <h4>Les critères</h4>
-      <p>Le rack sera intégré à un serveur web et nous publierons la suite de tests d'intégration qui sera utilisée pour tester les résultats. L'exactitude des résultats et la scalabilité de l'ensemble (performance intrinsèque + maitrise du stockage + complexité de l'algorithme en fonction du nombre de requêtes) serviront à déterminer le gagnant. <a href="#evaluation">Voir les détails sur l'évaluation</a></p>
+      <p>Le rack sera intégré à un serveur web et nous publierons la suite de tests d'intégration qui sera utilisée pour tester les résultats. L'exactitude des résultats et la scalabilité de l'ensemble (performance intrinsèque + maitrise du stockage + complexité de l'algorithme en fonction du nombre de requêtes) serviront à déterminer le gagnant. <a href="#evaluation">Voir les détails sur l'évaluation</a>.</p>
     </div>
     <div class="span-one-third">
       <h3>Un <strong>iPad 3</strong> à gagner !</h3>
@@ -74,12 +74,12 @@ badge: easter-contest-dimelo-badge.png
         L'implémentation devra faire au mieux pour ne pas être trop sensible à un eventuel décallage de temps entre les serveurs d'un même réseau.
       </p>
       <p>
-        <span class="label important">Important</span> Il n'est pas demandé de conserver d'historisation des informations, au contraire un des critères de jugement sera la scalabilité au niveau du stockage s'il y en a. Si vous avez besoin de fournir un script de nettoyage mettez le dans un <code>script/clean.rb</code>, le script de nettoyage doit également scaler convenablement.
+        <span class="label important">Important</span> Il n'est pas demandé de conserver d'historisation des informations, au contraire, un des critères de jugement sera la scalabilité au niveau du stockage s'il y en a. Si vous avez besoin de fournir un script de nettoyage mettez le dans un <code>script/clean</code>, le script de nettoyage doit également scaler convenablement.
       </p>
 
       <h3>Le client : la lecture des données</h3>
       <p>Le middleware rack se charge de la récupération des données. Ces données sont lus à la demande par un client.</p>
-      <p>Le client est un simple disponible à <code>script/rack-top</code> et s'executant avec un appel à <code>./script/rack-top &lt;livetraffic_id&gt;</code>. <code>livetraffic_id</code> est un paramètre optionnel correspondant au paramètre env['rack.livetraffic_id'] qui permet d'avoir plusieurs silos pour gérer les statistiques de plusieurs applications Rack indépendantes.</p>
+      <p>Le client est un simple script disponible à <code>script/rack-top</code> et s'exécutant avec un appel à <code>./script/rack-top &lt;livetraffic_id&gt;</code>. <code>livetraffic_id</code> est un paramètre optionnel correspondant au paramètre env['rack.livetraffic_id'] qui permet d'avoir plusieurs silos pour gérer les statistiques de plusieurs applications Rack indépendantes.</p>
       <p>Les temps seront donnés en ms et les moyennes seront arrondies à 1 décimale.</p> 
       <p>L'execution de ./script/rack-top renvoie un json répondant au format suivant:</p>
       <pre class="prettyprint">
