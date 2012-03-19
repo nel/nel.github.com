@@ -96,18 +96,18 @@ badge: easter-contest-dimelo-badge.png
                                                 }
                                               }
                         },
-          "slow_requests":  {
-                              "mysite.com/foo?params1=slow": 10,
-                              "mysite.com/bar": 9,
-                              "mysite.com/bar": 8,
-                              "mysite.com/bar": 8,
-                              "mysite.com/bar": 8,
-                              "mysite.com/bar": 7,
-                              "mysite.com/bar": 7,
-                              "mysite.com/bar": 7,
-                              "admin.mysite.com/users?order=created_at": 6,
-                              "admin.mysite.com/users?order=confirmed_at": 6
-                            }
+          "slow_requests":  [
+                              { "mysite.com/foo?params1=slow": 10 },
+                              { "mysite.com/bar": 9 },
+                              { "mysite.com/bar": 8 },
+                              { "mysite.com/bar": 8 },
+                              { "mysite.com/bar": 8 },
+                              { "mysite.com/bar": 7 },
+                              { "mysite.com/bar": 7 },
+                              { "mysite.com/bar": 7 },
+                              { "admin.mysite.com/users?order=created_at": 6 },
+                              { "admin.mysite.com/users?order=confirmed_at": 6 }
+                            ]
         } 
       </pre>
 
@@ -144,7 +144,7 @@ badge: easter-contest-dimelo-badge.png
           <tr>
             <td><code>slow_requests</code></td>
             <td>Object</td>
-            <td>Les 10 requêtes les plus longues l'url complète en clé et le temps en ms en valeur</td>
+            <td>Le tableau des 10 requêtes les plus longues, chaque élément du tableau contient un hash avec l'url complète en clé et le temps de la requête en ms en valeur.</td>
           </tr>
         </tbody>
       </table>
