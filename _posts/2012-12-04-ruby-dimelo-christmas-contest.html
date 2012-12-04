@@ -1,52 +1,36 @@
 ---
 layout: default
-title: Ruby Easter Contest
+title: Ruby Christmas Contest
 description: Le nouvel iPad  à gagner, un défi en ruby à réaliser.
-logo: easter-contest-dimelo-logo.png
-badge: easter-contest-dimelo-badge.png
+logo: dimelo_neige.png
+badge: Badge_DimeloRubyContest.jpg
 ---
 <section id="about">
-  <div class="hero-unit">
-    <h1>Résultats:
-    <p>
-    <h1>Bravo à <a href="https://twitter.com/lucasdicioccio">@lucasdicioccio</a> !</h1>
-    <p>
-    <strong>Le gagnant</strong> <a href="https://twitter.com/lucasdicioccio">@lucasdicioccio</a>, a eu la meilleure note avec 18/20 et a donc remporté le <a href="https://twitter.com/#!/Dimelo/status/190094925487013888/photo/1">Nouvel Ipad</a> !</p>
-    <p>
-Voici le <a href="https://github.com/nel/dimelo-easter-contest-evaluation">protocole de test</a> qui a servi à déterminer le gagnant. Les notes s'étalent de 18/20 à 10/20 dont 50% à 15 et au-delà.
-    </p>
-<p>
-Lucas avait la solution la plus compliquée (à base de ØMQ) mais également la plus précise par rapport aux règles. A noter <strong>l'excellente qualité des participations</strong>, <a href="http://redis.io/">redis</a> a fait l'unanimité chez les participants mais <a href="http://rubyeventmachine.com/">Event Machine</a> et <a href="http://www.zeromq.org/">ØMQ</a> ont été de la partie.
-    </p>
-    <p>Le détail des notes sera envoyé aux participants et nous sommes à leur disposition pour toute explication.</a>
-    <p><a class="btn primary large" href="https://github.com/lucasdicioccio/rack-livetraffic">Solution @lucasdicioccio &raquo;</a> <a class="btn primary large" href="https://github.com/nel/dimelo-easter-contest-evaluation">Environnement et protocole de test &raquo;</a></p>
-    <p>
-    Merci encore à tous les participants, et rendez-vous très vite pour la prochaine édition du #dimelocontest !</p>
-    </div>
   <div class="row">
     <div class="span-one-third">
       <h3>Un défi en Ruby !</h3>
-      <p>Pour la 2e édition du Dimelo Contest, nous vous proposons de coder un <a href="http://railscasts.com/episodes/151-rack-middleware">middleware Rack</a> pour:
-      <ul>
-        <li>déterminer les urls accédées via Rack,</li>
-        <li>calculer le nombre approximatif de visiteurs uniques,</li>
-        <li>et cela en temps réel, agrégé sur les 5 dernières minutes.</li>
-      </ul>
-      <p>Ce middleware rack doit pouvoir fonctionner sur tous les thread/process Rack utilisant le middleware sur un même reseau. Vous pouvez consulter les détails dans la <a href="#contest">section suivante</a> ainsi que les <a href="#evaluation">critères d'évaluation</a>.</p>
+      <p>Pour la 3e édition du Dimelo Contest, nous vous proposons d'aider la communauté open-source ruby et de recevoir un cadeau pour ça.
+      <p>Vous pouvez consulter les détails dans la <a href="#contest">section suivante</a> ainsi que les <a href="#evaluation">les modalités de participation</a>.
+      </p>
     </div>
     <div class="span-one-third">
-      <h3>Le <strong>nouvel iPad</strong> à gagner !</h3>
-      <img width="300px" src="/images/new-ipad.png" />
+      <h3>Une <strong>Nintendo Wii u</strong> à gagner !</h3>
+      <img width="300px" src="/images/CI_WiiU_img1_image600w.jpg" />
     </div>
     <div class="span-one-third" id="rules">
       <h3>Peu de règles !</h3>
       <p>Tout rubyiste peut participer ! Pour gagner, il faut :</p>
       <ul>
-        <li>fournir un programme qui fonctionne et respecte les <a href="#packaging">contraintes</a></li>
-        <li>avoir un algorithme performant, scalable au niveau des données et en fonction du trafic, et le plus précis possible ...</li>
-        <li>1 programme par personne - pas de programme en doublon</li>
-        <li>nous autoriser à publier votre solution ici (ou sur github) en cas de victoire</li> 
-        <li>rendre sa solution avant le <a href="http://meetup.rubyparis.org/events/56859922/">11 avril 2012</a> à midi CEST</li>
+        <li>Ecrire un patch pour l'un des projets open-source de cette <a href="#packaging">liste</a></li>
+        <li>
+          Soumettre une pull-request auprès des mainteneurs du projet
+        </li>
+        <li>
+          Que votre pull-request soit acceptée avant le 25 décembre 2012 à minuit CEST.
+        </li>
+        <li>
+          Le gagnant sera tiré au sort lors du premier <a href="http://www.meetup.com/parisrb/">événement Paris.rb de 2013</a>
+        </li>
         </ul>
         <p>Pour toute question, contactez-nous sur Twitter @dimelo, ou publier un tweeds avec le hashtag #dimelocontest.</p>
         <p>Sinon, rendez-vous en <a href="#contact">section contact</a>.
@@ -57,152 +41,16 @@ Lucas avait la solution la plus compliquée (à base de ØMQ) mais également la
   <div class="page-header">
     <h1>Le défi en détail</h1>
   </div>
-  <div class="row">
-    <div class="span4">
-      <h2>Détails fonctionnels</h2>
-    </div>
-    <div class="span12">
-      <h3>Support Multiprocess</h3>
-      <p>Le middleware agrégera l'ensemble des données des process/thread rack du réseau utilisant le middleware.<br/>
-        Cette agrégation peut se faire au niveau du stockage s'il y en a, ou de toute autre manière laissée à la libre appréciation de l'implémenteur.</p>
-
-      <p>Cette agrégation se fera par défaut entre tous les process rack mais il est possible de positionner un paramètre <code>env['rack.livetraffic_id']</code> au niveau de chaque requête pour n'agréger que sur les requêtes ayant cette id.</p>
-
-      <h3>Informations agrégées</h3>
-      <p>Le middleware rack permettra d'agréger sur une certain période l'information sur les données suivantes:</p>
-        <ul>
-          <li>le nombre de requêtes sur la période,</li>
-          <li>le nombre de requêtes par seconde en moyenne sur la période,</li>
-          <li>les visiteurs uniques sur la période (l'algorithme tentera de prendre en compte les <a href="http://fr.wikipedia.org/wiki/Network_address_translation">connexions "nattées"</a>),</li>
-          <li>le nombre d'accès par hostname sur la période,</li>
-          <li>le nombre d'accès par hostname/path sur la période (c'est à dire les url sans les query string),</li>
-          <li>les url des 10 requêtes les plus lentes sur la période.</li>
-        </ul>
-      <h3>Période d'agrégation</h3>
-      <p>
-        Les données récupérées permettront de déterminer les informations demandées sur une période de 5 minutes glissantes aka les "dernières 5 minutes".
-        Le résultat de cette agrégation n'a pas besoin d'être disponible sous forme de résultat dans la mémoire et/ou le stockage. Le client rack-top (cf section le client) peut les calculer quand il en a besoin.
-      </p>
-      <p>
-        L'implémentation devra faire au mieux pour ne pas être trop sensible à un éventuel décalage de temps entre les serveurs d'un même réseau.
-      </p>
-      <p>
-        <span class="label important">Important</span> Il n'est pas demandé de conserver d'historique des informations au-delà des 5 minutes, au contraire, un des critères de jugement sera la scalabilité au niveau du stockage s'il y en a, sur le/les daemons sinon. Si vous avez besoin de fournir un script de nettoyage mettez-le dans un <code>script/clean</code>, le script de nettoyage doit également scaler convenablement.
-      </p>
-
-      <h3>Le client : la lecture des données</h3>
-      <p>Le middleware rack se charge de la récupération des données. Ces données sont lues à la demande par un client.</p>
-      <p>Le client est un simple script disponible à <code>script/rack-top</code> et s'exécutant avec un appel à <code>./script/rack-top &lt;livetraffic_id&gt;</code>. <code>livetraffic_id</code> est un paramètre optionnel correspondant au paramètre env['rack.livetraffic_id'] qui permet d'avoir plusieurs silos pour gérer les statistiques de plusieurs applications Rack indépendantes.</p>
-      <p>Les temps seront donnés en ms et les moyennes seront arrondies à 1 décimale.</p> 
-      <p>L'execution de ./script/rack-top renvoie un json répondant au format suivant:</p>
-      <pre class="prettyprint">
-        {
-          "requests": 53,
-          "rate": 10.5,
-          "uniq_visitor": 4,
-          "hostnames":  {
-                          "mysite.com": { "total" => 50,
-                                          "paths" => {
-                                            "/foo": 40,
-                                            "/bar": 10
-                                          }
-                                        },
-                          "admin.mysite.com": { "total" => 3,
-                                                "paths" => {
-                                                  "/users" => 3
-                                                }
-                                              }
-                        },
-          "slow_requests":  [
-                              { "http://mysite.com/foo?params1=slow": 10 },
-                              { "http://mysite.com/bar": 9 },
-                              { "http://mysite.com/bar": 8 },
-                              { "http://mysite.com/bar": 8 },
-                              { "http://mysite.com/bar": 8 },
-                              { "http://mysite.com/bar": 7 },
-                              { "http://mysite.com/bar": 7 },
-                              { "http://mysite.com/bar": 7 },
-                              { "http://admin.mysite.com/users?order=created_at": 6 },
-                              { "http://admin.mysite.com/users?order=confirmed_at": 6 }
-                            ]
-        } 
-      </pre>
-
-      <p>Voici le détail des clés :</p>
-      <table class="bordered-table zebra-striped">
-        <thead>
-          <tr>
-            <th>Clé</th>
-            <th>Type</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>requests</code></td>
-            <td>number</td>
-            <td>Nombre de requêtes sur la période</td>
-          </tr>
-          <tr>
-            <td><code>rate</code></td>
-            <td>number</td>
-            <td>Requêtes par seconde en moyenne sur la période</td>
-          </tr>
-          <tr>
-            <td><code>uniq_visitor</code></td>
-            <td>number</td>
-            <td>Nombre de visiteurs uniques sur la période</td>
-          </tr>
-          <tr>
-            <td><code>hostnames</code></td>
-            <td>Object</td>
-            <td>L'object contient des clés correspondant aux hostnames. Chacune de ces clés à pour valeur un object qui contient deux clés: une clé <code>total</code> qui contient le nombre total de requête sur le hostname et une clé <code>paths</code> qui contient un autre object dont les clés sont les paths accèdés et en valeur le nombre de requête sur ces paths (voir exemple ci-dessus pour plus de clareté).</td>
-          </tr>
-          <tr>
-            <td><code>slow_requests</code></td>
-            <td>Object</td>
-            <td>Le tableau des 10 requêtes les plus longues, chaque élément du tableau contient un hash avec l'url complète en clé et le temps de la requête en ms en valeur.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
 <section id="packaging">
   <div class="row">
     <div class="span4">
-      <h2>Les contraintes de packaging</h2>
+      <h2>La liste des projets open-sources</h2>
     </div>
     <div class="span12">
-      <h3>Configuration et fichier config.ru</h3>
-      <p>Le middleware doit être fourni avec un fichier rackup config.ru fonctionnel et être compatible avec la "norme" <a href="https://github.com/rack/rack/wiki/Presentations">rack/rackup</a>. Voici un exemple de fichier config.ru</p>
+      <h3>Les gems utilisées chez Dimelo</h3>
       <pre class="prettyprint">
-        use Rack::LiveTraffic, {} #puts here your storage/discovery options if needed
-
-        app = proc do |env|
-          [ 200, {'Content-Type' => 'text/plain'}, ['OK'] ]
-        end
-
-        run app
-      </pre>
-
-      <h3>Stockage, dépendances et versions</h3>
-      <p>Les seuls stockages externes autorisés sont <a href="http://memcached.org/">memcached</a>, <a href="http://redis.io/">redis</a>, <a href="http://www.mongodb.org/">mongodb</a> et <a href="http://www.mysql.com/">mysql</a>, ils doivent fonctionner avec les paramètres par défaut et sans login/mdp.</p>
-      <p>Si vous souhaitez utiliser un système de queue externe seuls <a href="http://faye.jcoglan.com/">faye</a>, <a href="http://www.rabbitmq.com/">rabbitmq</a> et <a href="http://zeromq.com">ØMQ</a> sont autorisés</p>
-      <p>Si vous avez besoin d'un daemon et/ou de workers merci d'interfacer avec <a href="http://ddollar.github.com/foreman/">foreman</a> dans un procfile. Ces daemons doivent être codés en ruby et toutes leurs dépenses décrites dans un <a href="http://gembundler.com/gemfile.html">Gemfile</a>. Les gems devront s'installer sans autre dépendances que les librairies de dev des dépendances externes autorisées.
-      </p>
-      <p>Deux versions de ruby sont autorisées ruby 1.8.7 p249 et 1.9.3 p125, utilisez un .rvmrc pour préciser.</p>
-
-      <h3>Récapitulatif du livrable</h3>
-      <p>Le livrable est un répertoire ayant au moins la structure suivante :</p>
-      <pre>
-        . – script/clean    # Script de nettoyage des datas au besoin
-        | – script/rack-top # Script de lecture des données qui retourne du JSON
-        | – config.ru       # Rackfile pour le middleware (see example)
-        | – Gemfile         # Gemfile pour les dépendances ruby
-        | – Readme.md       # Description les dépendances externes (mongodb...) et des gotchas 
-        | – Procfile        # Procfile pour les éventuels daemons ruby
-        | – .rvmrc          # Version de ruby si différente de 1.8.7 p249
-        | – ...             # Le reste, middleware Rack, ...
+        Rails
+        ...
       </pre>
     </div>
   </div>
@@ -210,22 +58,19 @@ Lucas avait la solution la plus compliquée (à base de ØMQ) mais également la
 <section id="evaluation">
   <div class="row">
     <div class="span4">
-      <h2>L'évaluation des résultats</h2>
+      <h2>Le tirage au sort </h2>
     </div>
     <div class="span12">
       <h3>Comment allons-nous déterminer le gagnant ?</h3>
-      <p>Seules seront prises en compte les réponses qui correspondent à la <a href="#contest">description du défi</a> et aux <a href="#packaging">contraintes de packaging</a></p>
-      <p>Une grille d'évaluation sera mise en place, elle couvrira UNIQUEMENT les points suivants:</p>
+      <p>Seules seront prises en compte les pull-request acceptées dans <a href="#packaging">la liste des projets</a></p>
+      <p>Queqlues précisions sur le tirage au sort:</p>
       <ul>
-          <li>Qualité intrinsèque du middleware: threadsafe, multiprocess ?</li>
-          <li>Performance globale du middleware</li>
-          <li>Scalabilité du stockage/réseau, est-ce que les performances sont constantes en fonction du trafic, est-ce que le stockage grossit inconsidérément, est-ce que le nettoyage si besoin est bloquant, lourd, lent, fragmente le stockage... ?</li>
-          <li>Qualité de l'algorithme de calcul des visiteurs uniques</li>
-          <li>Qualité des calculs par rapport au trafic réel</li>
-          <li>Appréciation globale du code et de la solution</li>
+        <li>Le gagnant sera tiré au sort parmi les personnes qui auront vu leur pull-request acceptée.</li> 
+        <li>
+          Si plusieurs de vos pull-request sont acceptées, cela ne vous donnera pas plus de chance pour le tirage au sort. Mais nous ne pouvons que vous encourager à en soumettre plusieurs. Ne serait-ce que pour être sûr qu'au moins l'une de vos pull-request soit acceptée avant la fin du contest.
+        </li> 
+          <li>La pull-request doit être du code ruby (la documentation ne sera pas prise en compte)</li>
       </ul>
-      <p>Le jury sera composé de 5 personnes faisant partie ou pas de Dimelo, les membres du jury et leurs collègues ne peuvent pas participer au concours.</p>
-      <p>Les résultats de leur évaluation seront envoyés à chacun des candidats mais seule la solution du gagnant sera publiée sur ce site avec son code. Les participants et le gagnant restent propriétaires de leur code et peuvent en disposer à leur convenance.</p> 
     </div>
   </div>
 </section>
@@ -267,7 +112,7 @@ new TWTR.Widget({
     <div class="span10">
       <h3>Comment nous contacter ?</h3>
       <p>Posez vos questions sur twitter avec le #hashtag <a href="https://twitter.com/#!/search/realtime/%23dimelocontest">#dimelocontest</a> sur twitter afin que tout le monde puisse en bénéficier s'ils le souhaitent.</p>
-      <p>Le permalink pour ce contest est <a href="/2012/03/06/ruby-easter-egg-contest.html">http://contest.dimelo.com/2012/03/06/ruby-easter-egg-contest.html</a>.</p>
-      <p>Envoyer vos réponses à <a href="mailto:&#099;&#111;&#110;&#116;&#101;&#115;&#116;&#064;&#100;&#105;&#109;&#101;&#108;&#111;&#046;&#099;&#111;&#109;?subject=Solution%20Easter%20Contest">contest at dimelo.com</a> avant le <a href="http://meetup.rubyparis.org/events/56859922/">11 avril 2012</a> à midi CEST.</p>
+      <p>Le permalink pour ce contest est <a href="/2012/12/04/ruby-dimelo-christmas-contest.html">http://contest.dimelo.com/2012/12/04/ruby-dimelo-christmas-contest.html</a>.</p>
+      <p>Envoyer la référence de votre pull-request acceptée à <a href="mailto:&#099;&#111;&#110;&#116;&#101;&#115;&#116;&#064;&#100;&#105;&#109;&#101;&#108;&#111;&#046;&#099;&#111;&#109;?subject=Solution%20Easter%20Contest">contest at dimelo.com</a> avant le 1 janvier 2012 à midi CEST.</p>
     </div>
 </section>
