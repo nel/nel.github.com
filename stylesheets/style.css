@@ -19,7 +19,12 @@ padding-bottom: 40px;
 }
 .hero-unit h1 {
 font-size:3em;
-margin-bottom: 10px;
+margin-bottom: 33px;
+}
+.hero-unit li {
+  font-size:18px;
+  font-weight:200;
+  line-height:27px;
 }
 #quicklinks {
 position:absolute;
