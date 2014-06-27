@@ -1,77 +1,35 @@
 ---
 layout: default
-title: DIMELO Ruby Christmas Contest
-description: 1 défi RUBY, 3 tablettes Nexus 7 à gagner
-logo: dimelo_neige.png
+title: DIMELO Ruby Summer Contest
+description: Une pull request pendant l'été, une console Xbox One ou PS4 à gagner.
+logo: HPdimelo-ete3.jpg
 badge: Badge_DimeloRubyContest.jpg
 ---
 <section id="about">
-  <div class="hero-unit">
-  <div class="row">
-    <div class="span6">
-    <h1>Résultats</h1>
-    <p>
-      Bravo aux <strong>3</strong> gagnants de ce DIMELO Contest :
-      <ul>
-        <li>
-        <a href="https://twitter.com/etiennebarrie">@etiennebarrie</a>, qui a contribué à <a href="https://github.com/javan/whenever">Whenever</a>
-        </li>
-        <li>
-        <a href="https://twitter.com/shingara">@shingara</a>, qui a contribué à <a href="https://github.com/solnic/virtus">Virtus</a>
-        </li>
-        <li>
-        <a href="https://twitter.com/hdorio">@hdorio</a>, qui a contribué à <a href="https://github.com/mitchellh/vagrant">Vagrant</a>
-        </li>
-      </ul>
-    </p>
-    <p>
-    Ils remportent chacun un <strong>Google Nexus 7</strong>
-    </p>
-    <p>
-    <strong>Félicitations</strong> à Etienne, Cyril et Hadrien !
-    <br/>
-    <strong>Merci</strong> à tous les participants, et bon hacking ! 
-    </p>
-    </div>
-    <div class="span-one-third">
-      <img src="/images/DimeloContest-3.jpg">
-    </div>
-  </div>
-    <p>
-        <a class="btn primary large" href="https://github.com/javan/whenever/pull/277">Pull request @etiennebarrie &raquo;</a>
-        <a class="btn primary large" href="https://github.com/solnic/virtus/pull/141">Pull request @shingara &raquo;</a>
-        <a class="btn primary large" href="https://github.com/mitchellh/vagrant/pull/1260">Pull request @hdorio &raquo;</a>
-    </p>
-    <p>
-        <a class="btn primary large" href="http://jobs.dimelo.com">Rejoignez Dimelo ! &raquo;</a>
-    </p>
-  </div>
   <div class="row">
     <div class="span-one-third">
       <h3>Un nouveau défi en Ruby !</h3>
       <p>Ca y est, le DIMELO Contest est de retour.</p>
-      <p>Pour cette 3e édition, le principe est simple : VOUS faites (toujours) avancer la communauté RUBY et DIMELO vous récompense.</p>
-      <p>Comment faire ? Les détails et <a href="#evaluation">modalités de participation</a>, sont <a href="#contest">ici</a>.
-      </p>
+      <p>Pour cette 4e édition, le principe est simple : Si VOUS faîtes (encore) avancer la communauté open source Ruby alors Dimelo essaye de vous récompenser pour cela.</p>
+      <p id="deadline">Le contest est ouvert entre le <strong>1 juillet 2014 00:00 et le 1er septembre 2014 23h59 CEST</strong></p>
     </div>
     <div class="span-one-third">
-      <h3 style="text-align:center">Cette fois, non pas une... <br>ni deux...</h3>
-      <img width="300px" src="/images/nexus-7-2.png" />
-      <h3 style="text-align:center">mais bien TROIS <strong>Google Nexus 7</strong><br> à gagner !</h3>
+      <h3 style="text-align:center">Plutôt Xbox One ou PS4 ?</h3>
+      <img width="300px" src="/images/vs.jpg" />
+      <h3 style="text-align:center">A vous de choisir !<br/>#TeamXboxOne Vs #TeamPS4</h3>
     </div>
     <div class="span-one-third" id="rules">
-      <h3>Peu de règles (comme d'habitude)</h3>
+      <h3>Des règles simples !</h3>
       <p>Tout rubyiste peut participer. Pour gagner, il faut :</p>
       <ul>
-        <li><a href="#packaging">écrire un patch</a> pour un projet open-source en ruby hébergé sur github et possédant au moins 20 "Stars"</li>
+        <li><a href="#packaging">écrire un patch en ruby</a> pour un projet ruby open-source, hébergé sur github et comptabilisant au moins 20 "Stars"</li>
         <li>soumettre une pull request auprès des mainteneurs du projet</li>
-        <li>obtenir la validation de sa pull request avant le 3 janvier 2013 à minuit CEST</li>
-        <li>nous envoyer la référence de la pull request à <a href="mailto:&#099;&#111;&#110;&#116;&#101;&#115;&#116;&#064;&#100;&#105;&#109;&#101;&#108;&#111;&#046;&#099;&#111;&#109;?subject=Solution%20Christmas%20Contest">contest at dimelo.com, toujours avant le 3 janvier 2013 à minuit CEST.</a></li>
+        <li>obtenir la validation de sa pull request avant la <a href="#deadline">fin du contest</a></li>
+        <li>nous envoyer le lien vers la pull request à <a href="mailto:&#099;&#111;&#110;&#116;&#101;&#115;&#116;&#064;&#100;&#105;&#109;&#101;&#108;&#111;&#046;&#099;&#111;&#109;?subject=Solution%20Summer%20Contest">contest at dimelo.com</a>, avant la <a href="#deadline">fin du contest</a></li>
         </ul>
-        <p>Les 3 gagnants seront annoncés lors du premier <a href="http://www.meetup.com/parisrb/">événement Paris.rb de 2013</a>
+        <p><strong>2 gagnants</strong> seront tirés au sort lors du premier <a href="http://www.meetup.com/parisrb/">événement Paris.rb</a> suivant la <a href="#deadline">fin du contest</a>.
         </p>
-        <p>Des questions ? Envoyez-nous un tweet @dimelo sans oublier le hashtag #dimelocontest.</p>
-        <p>Sinon, rendez-vous en <a href="#contact">section contact</a>.
+        <p>Des questions ? Voir la <a href="#contact">section contact</a>.
      </div>
   </div><!-- /row -->
 </section>
@@ -82,11 +40,21 @@ badge: Badge_DimeloRubyContest.jpg
 <section id="packaging">
   <div class="row">
     <div class="span4">
-      <h2>Les projets open-source acceptés pour ce défi</h2>
+      <h2>Projets acceptés</h2>
     </div>
     <div class="span12">
       <h3>Les projets open-source hébergés sur github</h3>
-      <p>Pour permettre à plus de Rubyistes de participer nous avons décidé d'étendre la liste des projets qui sont acceptés. Nous <strong>accepterons les pull-requests</strong> effectuées sur des <strong>projets Ruby avec plus de 20 "Stars"</strong> sur GitHub. Cela fonctionne même si c'est votre propre projet, le compte github qui fait la pull-request doit exister AVANT le début de ce contest.</p>
+      <ul>
+        <li>
+          Le projet doit être un projet (majoritairement) Ruby
+        </li>
+        <li>
+          Le projet doit être hébergé sur Github et avoir au moins 20 "stars"
+        </li>
+         <li>
+          Le projet doit être Open-Source
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -97,13 +65,13 @@ badge: Badge_DimeloRubyContest.jpg
     </div>
     <div class="span12">
       <h3>Comment allons-nous déterminer les gagnants ?</h3>
-      <p>Seules seront prises en compte les pull request acceptées dans <a href="#packaging">la liste des projets</a>. Si vous pensez qu'un autre projet Ruby mérite d'être dans la liste, faites nous en part et nous le rajouterons à la liste des <a href="#community-project-list">projets propososés par la communauté</a>.</p>
-      <p>Queqlues précisions sur le tirage au sort</p>
       <ul>
-        <li>Les gagnants seront tirés au sort parmi les personnes qui auront vu leur pull request acceptée pendant la durée du concours.</li> 
         <li>
-          Dans un souci d'équité, chaque participant au défi n'a qu'une seule chance de gagner l'une des trois tablettes Nexus, et ce même si plusieurs de ces pull requests ont été acceptées pendant la durée du DIMELO Contest. Pour mettre toutes les chances de votre côté, nous vous encourageons tout de même à soumettre plusieurs pull requests.  
-        </li> 
+          Les 2 gagnants seront tirés au sort parmi les personnes qui auront vu leur pull request acceptées pendant la durée du concours. Nous les contacterons pour qu'ils choississent #Xbox One Vs #ps4.
+        </li>
+        <li>
+          Dans un souci d'équité, chaque participant au défi n'a qu'une seule chance de gagner l'une des deux consoles, et ce même si plusieurs de ces pull requests ont été acceptées pendant la durée du DIMELO Contest. Pour mettre toutes les chances de votre côté, nous vous encourageons tout de même à soumettre plusieurs pull requests.  
+        </li>
         <li>
           La pull request doit être du code Ruby (la documentation ne sera pas prise en compte).
         </li>
@@ -111,10 +79,13 @@ badge: Badge_DimeloRubyContest.jpg
           Les pull requests rejetées ne seront pas prises en compte.
         </li>
         <li>
-          Seules les pull requests effectuées à partir du 10 décembre 2012 à midi CEST seront prises en compte.
+          Seules les pull requests effectuées et acceptées entres les <a href="#deadline">dates du contest</a> seront prises en compte.
         </li>
         <li>
-          Coup de pouce : dans l'hypothèse où votre pull request ne serait pas acceptée par les mainteneurs dans le délai imparti, vous pouvez quand même nous la faire parvenir et notre jury l'analysera et validera le cas échéant votre participation au tirage au sort. Bien entendu, les membres du jury et leurs collègues ne peuvent pas participer au concours.
+          Le compte github qui fait la pull-request doit exister AVANT le début de ce contest
+        </li>
+        <li>
+          Les équipes Dimelo et leurs proches ne peuvent pas participer au concours.
         </li>
       </ul>
     </div>
@@ -123,42 +94,13 @@ badge: Badge_DimeloRubyContest.jpg
 <section id="contact">
   <div class="row">
     <div class="span6">
-      <h2>#dimelocontest</h2>
-      <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'search',
-  search: '#dimelocontest',
-  interval: 30000,
-  title: 'Dernières discussions sur le contest',
-  subject: '',
-  width: 'auto',
-  height: 300,
-  theme: {
-    shell: {
-      background: '#202426',
-      color: '#ffffff'
-    },
-    tweets: {
-      background: '#ffffff',
-      color: '#444444',
-      links: '#1985b5'
-    }
-  },
-  features: {
-    scrollbar: true,
-    loop: false,
-    live: true,
-    behavior: 'all'
-  }
-}).render().start();
-</script>
+      <a class="twitter-timeline" height="300" href="https://twitter.com/hashtag/dimelocontest" data-widget-id="481149262151970816">#dimelocontest Tweets</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     </div>
     <div class="span10">
       <h3>Comment nous contacter ?</h3>
       <p>Posez vos questions sur twitter avec le hashtag <a href="https://twitter.com/#!/search/realtime/%23dimelocontest">#dimelocontest</a> sur twitter, afin que tout le monde en profite.</p>
-      <p>Le permalink pour ce contest est <a href="/2012/12/04/ruby-dimelo-christmas-contest.html">http://contest.dimelo.com/2012/12/04/ruby-dimelo-christmas-contest.html</a>.</p>
-      <p>Envoyez la référence de votre pull request acceptée à <a href="mailto:&#099;&#111;&#110;&#116;&#101;&#115;&#116;&#064;&#100;&#105;&#109;&#101;&#108;&#111;&#046;&#099;&#111;&#109;?subject=Solution%20Christmas%20Contest">contest at dimelo.com</a> avant le 3 janvier 2013 à minuit CEST.</p>
+      <p>Le permalink pour ce contest est <a href="/2014/06/26/ruby-dimelo-summer-contest.html">http://contest.dimelo.com/2014/06/26/ruby-dimelo-summer-contest.html</a>.</p>
+      <p>Envoyez la référence de votre pull request acceptée à <a href="mailto:&#099;&#111;&#110;&#116;&#101;&#115;&#116;&#064;&#100;&#105;&#109;&#101;&#108;&#111;&#046;&#099;&#111;&#109;?subject=Solution%20Summer%20Contest">contest at dimelo.com</a> avant la <a href="#deadline">fin du contest</a>.</p>
     </div>
 </section>
