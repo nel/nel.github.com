@@ -1,141 +1,174 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-	background: transparent;
+?* reset from https://piccalil.li/blog/a-more-modern-css-reset/ */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
 body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+  min-height: 100vh;
+  line-height: 1.5;
 }
 
-/* remember to define focus styles! */
-:focus {
-	outline: 0;
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
 }
 
-/* remember to highlight inserts somehow! */
-ins {
-	text-decoration: none;
-}
-del {
-	text-decoration: line-through;
-}
-
-/* tables still need 'cellspacing="0"' in the markup */
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
 }
 
-
-html
-{
-    height: 100%;
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
 }
 
-body
-{
-    background-image: url(../images/background.png);
-    background-repeat: repeat-x;
-    background-position: top;
-    height: 100%;
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
 }
 
-#page
-{
-    width: 960px;
-    min-height: 100%;
-    height: 100%;
-    margin: 0 auto;
-    position: relative;
-    background-image: url(../images/vignet.png);
-    background-repeat: no-repeat;
-    background-position: 0 0;
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
 }
 
-#logo
-{
-    margin: 0px 0 0 0;
-    height: 380px;
-    background-image: url(../images/logo.png);
-    background-repeat: no-repeat;
-    background-position: center 50px;
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
 }
 
-#logo h1, #logo h2, #logo h3
-{
-    display: none;
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
 }
 
-#submit
-{
-    text-align: center;
+html {
+  height: 100%;
 }
 
-#thank_you
-{
-    font-family: "Lucida Grande", verdana, sans-serif;
-    font-size: 14px;
-    color: #33AA33;
+body {
+  background-image: url(../images/background.png);
+  background-repeat: repeat-x;
+  background-position: top;
+  height: 100%;
 }
 
-#email
-{
-    font-family: "Lucida Grande", verdana, sans-serif;
-    font-size: 14px;
-    color: #333333;
-    padding: 5px;
-    width: 300px;
-    border: solid 1px #5ea7d8;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
+main {
+  width: 960px;
+  min-height: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  background-image: url(../images/vignet.png);
+  background-repeat: no-repeat;
+  background-position: 0 0;
 }
 
-.button
-{
-    font-family: "Lucida Grande", verdana, sans-serif;
-    font-size: 14px;
-    padding: 5px;
-    width: 100px;
-    text-align:center;
-    border: solid 1px #62acdd;
-    background-color: #5ea7d8;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    cursor: pointer;
-    color: #ffffff;
+#logo {
+  margin: 0px 0 0 0;
+  height: 380px;
+  background-image: url(../images/logo.png);
+  background-repeat: no-repeat;
+  background-position: center 50px;
+}
+
+#logo h1,
+#logo h2,
+#logo h3 {
+  display: none;
+}
+
+#submit {
+  text-align: center;
+}
+
+#thank_you {
+  font-family: "Lucida Grande", verdana, sans-serif;
+  font-size: 14px;
+  color: #33aa33;
+}
+
+#email {
+  font-family: "Lucida Grande", verdana, sans-serif;
+  font-size: 14px;
+  color: #333333;
+  padding: 5px;
+  width: 300px;
+  border: solid 1px #5ea7d8;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+
+.button {
+  font-family: "Lucida Grande", verdana, sans-serif;
+  font-size: 14px;
+  padding: 5px;
+  width: 100px;
+  text-align: center;
+  border: solid 1px #62acdd;
+  background-color: #5ea7d8;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  cursor: pointer;
+  color: #ffffff;
 }
 
 #buttons {
   width: 465px;
-  margin:30px auto;
+  margin: 30px auto;
 }
 
 #buttons li {
-  float:left;
-  display:block;
+  float: left;
+  display: block;
   margin: 0 20px;
   width: 100px;
 }
@@ -146,12 +179,11 @@ a {
   color: #ffffff;
 }
 
-a:link, a:visited
-{
-    text-decoration:underline;
+a:link,
+a:visited {
+  text-decoration: underline;
 }
 
-a:hover
-{
-    text-decoration:none;
+a:hover {
+  text-decoration: none;
 }
