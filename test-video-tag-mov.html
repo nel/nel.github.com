@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test MOV Video Player</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background: #f8f8f8;
+        padding: 2em;
+        text-align: center;
+      }
+      video {
+        width: 80vw;
+        max-width: 800px;
+        margin: 2em auto;
+        display: block;
+        background: #222;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Test MOV Video Player</h1>
+    <video controls>
+      <!-- works without this sources too -->
+      <source
+        src="https://testfileorg.netwet.net/Sample%20Video%202/sample_1280x720.mov"
+        type="video/quicktime"
+      />
+      <!-- works without this sources too -->
+      <source
+        src="https://testfileorg.netwet.net/Sample%20Video%202/sample_1280x720.mov"
+        type="video/mp4"
+      />
+      <source
+        src="https://testfileorg.netwet.net/Sample%20Video%202/sample_1280x720.mov"
+      />
+      Your browser does not support the video tag.
+    </video>
+    <p>
+      If the video does not play, your browser may not support MOV files.<br />
+      Try using a different browser or download the file directly:
+      <a
+        href="https://testfileorg.netwet.net/Sample%20Video%202/sample_1280x720.mov"
+        download
+        >Download MOV</a
+      >
+    </p>
+  </body>
+</html>
